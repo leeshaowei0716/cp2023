@@ -1,11 +1,26 @@
 <h1>About</h1>
-<p>
-<a href="https://github.com/mdecycu/cmsite">
-  https://github.com/mdecycu/cmsite
- </a>
-</p>
-<p>
-</p>
+<p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite </a></p>
+<h1>w6</h1>
+<p>// https://en.wikipedia.org/wiki/Flag_of_thcp2023.a0968899313.repl.coe_Republic_of_China<br/>// cc roc_flag.c -lgd -lm to link with gd and math library<br/>// https://www.rapidtables.com/web/color/RGB_Color.html<br/>// 幾何形狀著色與繪圖練習<br/>// 以下 gd 繪圖程式嘗試畫出 ROC 國旗, 請根據下列程式內容完成後續的國旗繪圖<br/>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>void draw_roc_flag(gdImagePtr img);<br/>void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);</p>
+<p>int main() {<br/> // width 3: height 2<br/> int width = 1200;<br/> int height = (int)(width*2.0 / 3.0);</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>draw_roc_flag(img);</p>
+<p>FILE *outputFile = fopen("./../images/roc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }<br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}</p>
+<p>void draw_roc_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> int center_x = (int)(width/4);<br/> int center_y = (int)(height/4);<br/> int sun_radius = (int)(width/8);<br/> // Colors for the flag<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes<br/> blue = gdImageColorAllocate(img, 0, 41, 204); // Blue<br/> // red rectangle area<br/> gdImageFilledRectangle(img, 0, 0, width, height, red);<br/> // blue rectangle area<br/> gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);<br/> // 目前僅畫出青天白日的輪廓直線, 請嘗試計算所需的點座標完成國旗繪圖<br/> draw_white_sun(img, center_x, center_y, sun_radius, white);<br/>}</p>
+<p>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {<br/> float angle = 0;<br/> int fromX, fromY;<br/> int toX, toY;<br/> for (int i=0; i&lt;24; i++){<br/> angle += 5*M_PI*2/12;<br/> //printf("%.3f", angle);<br/> toX = center_x + cos(angle)*sun_radius;<br/> toY = center_y + sin(angle)*sun_radius;<br/> // 只有 i 為 0 時移動到 toX, toY, 其餘都進行直線繪圖<br/> if (i!=0){<br/> gdImageLine(img, fromX, fromY, toX, toY, color);<br/> }<br/> fromX = toX;<br/> fromY = toY;<br/> }<br/>}</p>
+<p></p>
+<p><img alt="" height="267" src="/images/roc_flag.png" width="400"/></p>
+<p></p>
+<p>// https://en.wikipedia.org/wiki/Flag_of_thcp2023.a0968899313.repl.coe_Republic_of_China<br/>// cc roc_flag.c -lgd -lm to link with gd and math library<br/>// https://www.rapidtables.com/web/color/RGB_Color.html<br/>// 幾何形狀著色與繪圖練習<br/>// 以下 gd 繪圖程式嘗試畫出 ROC 國旗, 請根據下列程式內容完成後續的國旗繪圖<br/>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>void draw_roc_flag(gdImagePtr img);<br/>void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);</p>
+<p>int main() {<br/> // width 3: height 2<br/> int width = 1200;<br/> int height = (int)(width*2.0 / 3.0);</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>draw_roc_flag(img);</p>
+<p>FILE *outputFile = fopen("./../images/roc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }<br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}</p>
+<p>void draw_roc_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> int center_x = (int)(width/4);<br/> int center_y = (int)(height/4);<br/> int sun_radius = (int)(width/8);<br/> // Colors for the flag<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes<br/> blue = gdImageColorAllocate(img, 0, 41, 204); // Blue<br/> // red rectangle area<br/> gdImageFilledRectangle(img, 0, 0, width, height, red);<br/> // blue rectangle area<br/> gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);<br/> // 目前僅畫出青天白日的輪廓直線, 請嘗試計算所需的點座標完成國旗繪圖<br/> draw_white_sun(img, center_x, center_y, sun_radius, white);<br/>}</p>
+<p>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {<br/> float angle = 0;<br/> int fromX, fromY;<br/> int toX, toY;<br/> for (int i=0; i&lt;24; i++){<br/> angle += 5*M_PI*2/12;<br/> //printf("%.3f", angle);<br/> toX = center_x + cos(angle)*sun_radius;<br/> toY = center_y + sin(angle)*sun_radius;<br/> // 只有 i 為 0 時移動到 toX, toY, 其餘都進行直線繪圖<br/> if (i!=0){<br/> gdImageLine(img, fromX, fromY, toX, toY, color);<br/> }<br/> fromX = toX;<br/> fromY = toY;<br/> }<br/>}</p>
+<p><img alt="" height="211" src="/images/usa_flag.png" width="400"/></p>
 <h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
