@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='w9.html'>w9</a><li><a href='w10.html'>w10</a><li><a href='w11-12.html'>w11-12</a><li><a href='w13.html'>w13</a></li>
+                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='w10.html'>w10</a><li><a href='w11-12.html'>w11-12</a><li><a href='w13.html'>w13</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,67 +142,267 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w9.html'>Next</a> >> w9<br /><h1>w8</h1>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include &lt;stdio.h&gt; </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include &lt;gd.h&gt; </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include &lt;stdlib.h&gt;</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">無效drawJapanFlag() { </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int width = 300; </span><span style="vertical-align: inherit;">//寬度</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int高度=200; </span><span style="vertical-align: inherit;">// 高度</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int 半徑 = 50; </span><span style="vertical-align: inherit;">// 貨物半徑</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int centerX = 150; </span><span style="vertical-align: inherit;">// 交易中心X座標</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int centerY = 100; </span><span style="vertical-align: inherit;">// 訂單中心Y座標</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 建立一個24位元的彩色圖片</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">gdImagePtr im = gdImageCreateTrueColor(width, height);</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 設定背景色為白色</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int white = gdImageColorAllocate(im, 255, 255, 255); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">gdImageFill(im, 0, 0, 白色);</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 設定需求的顏色為紅色</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int red = gdImageColorAllocate(im, 255, 0, 0);</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 畫紅色浪漫</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">gdImageFilledEllipse(im, centerX, centerY, 2 * radius, 2 * radius, red);</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 輸出圖片到file</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">檔 *output = fopen("japanese_flag.png", "wb"); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">if (output == NULL) { </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">fprintf(stderr, "無法開啟檔案寫入。\n"); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">退出（EXIT_FAILURE）；</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">gdImagePng(im, 輸出);</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">// 釋放記憶體</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">gdImageDestroy(im); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">fclose(輸出); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">int main() {</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">繪製日本國旗(); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">printf("創建日本國旗：japanese_flag.png\n"); </span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">返回0；</span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></p>
-<p><img alt="" height="260" src="data:image/png;base64,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" width="391"/></p>
+    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w10.html'>Next</a> >> w10<br /><h1>w8</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;stdlib.h&gt;
+
+無效drawJapanFlag() {
+int width = 300; //寬度
+int高度=200; // 高度
+int 半徑 = 50; // 貨物半徑
+int centerX = 150; // 交易中心X座標
+int centerY = 100; // 訂單中心Y座標
+
+// 建立一個24位元的彩色圖片
+gdImagePtr im = gdImageCreateTrueColor(width, height);
+
+// 設定背景色為白色
+int white = gdImageColorAllocate(im, 255, 255, 255);
+gdImageFill(im, 0, 0, 白色);
+
+// 設定需求的顏色為紅色
+int red = gdImageColorAllocate(im, 255, 0, 0);
+
+// 畫紅色浪漫
+gdImageFilledEllipse(im, centerX, centerY, 2 * radius, 2 * radius, red);
+
+// 輸出圖片到file
+檔 *output = fopen("japanese_flag.png", "wb");
+if (output == NULL) {
+fprintf(stderr, "無法開啟檔案寫入。\n");
+退出（EXIT_FAILURE）；
+}
+
+gdImagePng(im, 輸出);
+
+// 釋放記憶體
+gdImageDestroy(im);
+fclose(輸出);
+}
+
+int main() {
+繪製日本國旗();
+printf("創建日本國旗：japanese_flag.png\n");
+返回0；
+}
+
+</pre>
+<p><br/><img alt="" height="260" src="data:image/png;base64,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" width="391"/></p>
 <p></p>
-<p>#include &lt;stdio.h&gt;<br/> #include &lt;gd.h&gt;<br/> #include &lt;math.h&gt;</p>
-<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);<br/> void draw_chinese_flag(gdImagePtr img);</p>
-<p>int main() {<br/> int width = 300; // 國旗寬度<br/> int height = 200; // 國旗高度</p>
-<p>gdImagePtr im = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(im, 0);</p>
-<p>draw_chinese_flag(im);</p>
-<p>FILE *outputFile = fopen("./../images/proc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打開輸出文件時出錯。\n");<br/> return 1;<br/> }</p>
-<p>gdImagePngEx(im, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(im);</p>
-<p>return 0;<br/> }</p>
-<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
-<p>double outer_radius = size / 2;<br/> double inner_radius = size / 6;<br/> double angle = M_PI / 5.0;</p>
-<p>for (int i = 0; i &lt; 10; i++) {<br/> double radius = (i % 2 == 0) ? outer_radius : inner_radius;<br/> double theta = rotation_angle + i * angle;<br/> points[i].x = x + radius * cos(theta);<br/> points[i].y = y + radius * sin(theta);<br/> }</p>
-<p>gdImageFilledPolygon(img, points, 10, color);<br/> }</p>
-<p>void draw_chinese_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, yellow;</p>
-<p>red = gdImageColorAllocate(img, 255, 0, 0); // 紅色背景<br/> yellow = gdImageColorAllocate(img, 255, 255, 0); // 黃色星星</p>
-<p>gdImageFilledRectangle(img, 0, 0, width, height, red);</p>
-<p>int star_size = (int)(0.28 * height);<br/> int star_x = (int)(0.165 * width);<br/> int star_y = (int)(0.265 * height);</p>
-<p>draw_star(img, star_x, star_y, star_size, yellow, 11.0);</p>
-<p>double radius = 0.15 * height;<br/> double angle = 360 / 7 * M_PI / 179.0;<br/> double rotation = -M_PI / 7.5;<br/> int cx = (int)(0.32 * width);<br/> int cy = (int)(0.27 * height);</p>
-<p>for (int i = -1; i &lt; 3; i++) {<br/> int x = (int)(cx + radius * cos(i * angle + rotation));<br/> int y = (int)(cy + radius * sin(i * angle + rotation));<br/> draw_star(img, x, y, 19, yellow, M_PI / 5.0);<br/> }<br/> }</p>
-<p><img alt="" height="200" src="./../images/proc_flag.png" width="300"/></p>
-<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
-<p>void draw_uk_flag(gdImagePtr img);<br/>void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);</p>
-<p>int main() {<br/> int width = 1200;<br/> int height = width / 2;</p>
-<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
-<p>draw_uk_flag(img);</p>
-<p>FILE *outputFile = fopen("./../images/uk_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打開輸出文件時發生錯誤。\n");<br/> return 1;<br/> }</p>
-<p>gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);</p>
-<p>return 0;<br/>}</p>
-<p>void draw_uk_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);</p>
-<p>int red, white, blue;<br/> red = gdImageColorAllocate(img, 204, 0, 0);<br/> white = gdImageColorAllocate(img, 255, 255, 255);<br/> blue = gdImageColorAllocate(img, 0, 0, 153);</p>
-<p>gdImageFilledRectangle(img, 0, 0, width, height, blue);</p>
-<p>// 繪製斜線<br/> {<br/> int line_thickness = 100;<br/> gdImageSetThickness(img, line_thickness);</p>
-<p>// 繪製白色斜線<br/> int x1 = 0, y1 = 600, x2 = 1200, y2 = 0;<br/> gdImageLine(img, x1, y1, x2, y2, white);</p>
-<p>x1 = 0, y1 = 0, x2 = 1200, y2 = 600;<br/> gdImageLine(img, x1, y1, x2, y2, white);<br/> }</p>
-<p>// 繪製紅色斜線<br/> {<br/> int line_thickness = 33;<br/> gdImageSetThickness(img, line_thickness);</p>
-<p>// 繪製紅色斜線<br/> int x1 = 566, y1 = 300, x2 = 1166, y2 = 0;<br/> gdImageLine(img, x1, y1, x2, y2, red);</p>
-<p>x1 = 1233, y1 = 600, x2 = 633, y2 = 300;<br/> gdImageLine(img, x1, y1, x2, y2, red);</p>
-<p>x1 = 566, y1 = 300, x2 = -33, y2 = 0;<br/> gdImageLine(img, x1, y1, x2, y2, red);</p>
-<p>x1 = 600, y1 = 316.5, x2 = 0, y2 = 616.5;<br/> gdImageLine(img, x1, y1, x2, y2, red);<br/> }</p>
-<p>// 繪製白色斜線<br/> {<br/> int line_thickness = 33;<br/> gdImageSetThickness(img, line_thickness);</p>
-<p>// 繪製斜線<br/> int x1 = 0, y1 = 600, x2 = 1200, y2 = 0;<br/> gdImageLine(img, x1, y1, x2, y2, red);</p>
-<p>x1 = 1200, y1 = 16.5, x2 = 600, y2 = 316.5;<br/> gdImageLine(img, x1, y1, x2, y2, white);</p>
-<p>x1 = 0, y1 = 583.5, x2 = 600, y2 = 283.5;<br/> gdImageLine(img, x1, y1, x2, y2, white);<br/> }</p>
-<p>// 繪製白色十字<br/> int cross_width = width / 32;<br/> int cross_arm_width = width / 32;<br/> int center_x = width / 2;<br/> int center_y = height / 2;</p>
-<p>gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);<br/> gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);</p>
-<p>// 繪製紅色十字<br/> gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);<br/> gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);<br/>}</p>
-<p><img alt="" height="233" src="./../images/uk_flag.png" width="466"/></p>
-<br />w7 << <a href='w7.html'>Previous</a> <a href='w9.html'>Next</a> >> w9</div>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+void draw_chinese_flag(gdImagePtr img);
+
+int main() {
+int width = 300; // 國旗寬度
+int height = 200; // 國旗高度
+
+gdImagePtr im = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(im, 0);
+
+draw_chinese_flag(im);
+
+FILE *outputFile = fopen("./../images/proc_flag.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "打開輸出文件時出錯。\n");
+return 1;
+}
+
+gdImagePngEx(im, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(im);
+
+return 0;
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+gdPoint points[10];
+
+double outer_radius = size / 2;
+double inner_radius = size / 6;
+double angle = M_PI / 5.0;
+
+for (int i = 0; i &lt; 10; i++) {
+double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+double theta = rotation_angle + i * angle;
+points[i].x = x + radius * cos(theta);
+points[i].y = y + radius * sin(theta);
+}
+
+gdImageFilledPolygon(img, points, 10, color);
+}
+
+void draw_chinese_flag(gdImagePtr img) {
+int width = gdImageSX(img);
+int height = gdImageSY(img);
+int red, yellow;
+
+red = gdImageColorAllocate(img, 255, 0, 0); // 紅色背景
+yellow = gdImageColorAllocate(img, 255, 255, 0); // 黃色星星
+
+gdImageFilledRectangle(img, 0, 0, width, height, red);
+
+int star_size = (int)(0.28 * height);
+int star_x = (int)(0.165 * width);
+int star_y = (int)(0.265 * height);
+
+draw_star(img, star_x, star_y, star_size, yellow, 11.0);
+
+double radius = 0.15 * height;
+double angle = 360 / 7 * M_PI / 179.0;
+double rotation = -M_PI / 7.5;
+int cx = (int)(0.32 * width);
+int cy = (int)(0.27 * height);
+
+for (int i = -1; i &lt; 3; i++) {
+int x = (int)(cx + radius * cos(i * angle + rotation));
+int y = (int)(cy + radius * sin(i * angle + rotation));
+draw_star(img, x, y, 19, yellow, M_PI / 5.0);
+}
+}
+
+</pre>
+<p><br/><img alt="" height="200" src="./../images/proc_flag.png" width="300"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_uk_flag(gdImagePtr img);
+void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);
+
+int main() {
+int width = 1200;
+int height = width / 2;
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+draw_uk_flag(img);
+
+FILE *outputFile = fopen("./../images/uk_flag.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "打開輸出文件時發生錯誤。\n");
+return 1;
+}
+
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+
+return 0;
+}
+
+void draw_uk_flag(gdImagePtr img) {
+int width = gdImageSX(img);
+int height = gdImageSY(img);
+
+int red, white, blue;
+red = gdImageColorAllocate(img, 204, 0, 0);
+white = gdImageColorAllocate(img, 255, 255, 255);
+blue = gdImageColorAllocate(img, 0, 0, 153);
+
+gdImageFilledRectangle(img, 0, 0, width, height, blue);
+
+// 繪製斜線
+{
+int line_thickness = 100;
+gdImageSetThickness(img, line_thickness);
+
+// 繪製白色斜線
+int x1 = 0, y1 = 600, x2 = 1200, y2 = 0;
+gdImageLine(img, x1, y1, x2, y2, white);
+
+x1 = 0, y1 = 0, x2 = 1200, y2 = 600;
+gdImageLine(img, x1, y1, x2, y2, white);
+}
+
+// 繪製紅色斜線
+{
+int line_thickness = 33;
+gdImageSetThickness(img, line_thickness);
+
+// 繪製紅色斜線
+int x1 = 566, y1 = 300, x2 = 1166, y2 = 0;
+gdImageLine(img, x1, y1, x2, y2, red);
+
+x1 = 1233, y1 = 600, x2 = 633, y2 = 300;
+gdImageLine(img, x1, y1, x2, y2, red);
+
+x1 = 566, y1 = 300, x2 = -33, y2 = 0;
+gdImageLine(img, x1, y1, x2, y2, red);
+
+x1 = 600, y1 = 316.5, x2 = 0, y2 = 616.5;
+gdImageLine(img, x1, y1, x2, y2, red);
+}
+
+// 繪製白色斜線
+{
+int line_thickness = 33;
+gdImageSetThickness(img, line_thickness);
+
+// 繪製斜線
+int x1 = 0, y1 = 600, x2 = 1200, y2 = 0;
+gdImageLine(img, x1, y1, x2, y2, red);
+
+x1 = 1200, y1 = 16.5, x2 = 600, y2 = 316.5;
+gdImageLine(img, x1, y1, x2, y2, white);
+
+x1 = 0, y1 = 583.5, x2 = 600, y2 = 283.5;
+gdImageLine(img, x1, y1, x2, y2, white);
+}
+
+// 繪製白色十字
+int cross_width = width / 32;
+int cross_arm_width = width / 32;
+int center_x = width / 2;
+int center_y = height / 2;
+
+gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);
+gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);
+
+// 繪製紅色十字
+gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);
+gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);
+}
+
+</pre>
+<p><br/><img alt="" height="233" src="./../images/uk_flag.png" width="466"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+
+int main() {
+    // Create a new GD image (French flag dimensions: 900x600)
+    gdImagePtr im = gdImageCreateTrueColor(900, 600);
+
+    // Define colors (RGB format)
+    int blue = gdImageColorAllocate(im, 0, 0, 255);
+    int white = gdImageColorAllocate(im, 255, 255, 255);
+    int red = gdImageColorAllocate(im, 255, 0, 0);
+
+    // Draw vertical stripes (3 equal-width stripes)
+    int stripeWidth = 900 / 3;
+    gdImageFilledRectangle(im, 0, 0, stripeWidth - 1, 599, blue);
+    gdImageFilledRectangle(im, stripeWidth, 0, 2 * stripeWidth - 1, 599, white);
+    gdImageFilledRectangle(im, 2 * stripeWidth, 0, 899, 599, red);
+
+    // Save the image to a file
+    FILE *outputFile = fopen("french_flag.png", "wb");
+    gdImagePng(im, outputFile);
+    fclose(outputFile);
+
+    // Free the GD image
+    gdImageDestroy(im);
+
+    return 0;
+}
+</pre>
+<span style="vertical-align: inherit;"><img alt="" height="267" src="./../images/french_flag.png" width="400"/></span>
+<br/><span style="vertical-align: inherit;">w</span>9
+<br />w7 << <a href='w7.html'>Previous</a> <a href='w10.html'>Next</a> >> w10</div>
         
     <!-- footer -->
       <div class="container">
