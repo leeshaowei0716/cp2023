@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='w10.html'>w10</a><li><a href='w11-12.html'>w11-12</a><li><a href='w13.html'>w13</a></li>
+                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W9.html'>W9</a><li><a href='W10.html'>W10</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,73 +142,8 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>w11-12</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-int 寬度 = 800;
-整數高度=600；
-
-gdImagePtr img = gdImageCreateTrueColor(寬度, 高度);
-gdImageAlphaBlending(img, 0);
-
-FILE *outputFile = fopen("hellogd.png", "wb");
-如果（輸出檔案== NULL）{
-
-fprintf(stderr, "開啟輸出檔時發生錯誤。\n");
-
-返回1；
-}
-
-int 紅色 = gdImageColorAllocate(img, 255, 0, 0);
-int 藍色 = gdImageColorAllocate(img, 0, 0, 255);
-int black = gdImageColorAllocate(img, 0, 0, 0);
-int 白色 = gdImageColorAllocate(img, 255, 255, 255);
-// 長方形塗色
-gdImageFilledRectangle(img, 0, 0, width, height, white);
-gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, 藍色);
-// 曲面形著色
-gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);
-// 圓形畫線
-gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);
-// 畫直線
-gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, blue);
-
-// 施工畫線
-gdPoint points[4];
-點[0].x = (int)寬度/4;
-點[0].y = (int)高度*3/4;
-點[1].x = 點[ 0].x + 100；
-點[1].y = 點[0].y；
-點[2].x = 點[1].x；
-點[2].y = 點[1].y + 100 ；
-點[3].x = 點[2].x - 100；
-點[3].y = 點[2].y;
-gdImagePolygon(img, 點, 4, 黑色);
-
-// 廈門著色
-gdPointpoints2[4];
-點2[0].x = (int)寬度/3;
-點2[0].y = (int)高度/2;
-點2[1].x =點2[ 0].x + 100；
-點2[1].y = 點2[0].y;
-點2[2].x = 點2[1].x;
-點2[2].y = 點2[ 1].y + 100；
-點2[3].x = 點2[2].x - 150；
-點2[3].y = 點2[2].y;
-gdImageFilledPolygon(img, 點2, 4, 紅色);
-
-gdImagePngEx(img, 輸出檔, 9);
-fclose(輸出檔);
-gdImageDestroy(img);
-回傳0；
-}
-
-</pre>
-<p><span style="vertical-align: inherit;"><br/><img alt="" height="300" src="./../images/hellogd.png" width="400"/></span></p>
-<br />w10 << <a href='w10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+    <div id="tipue_search_content">W9 << <a href='W9.html'>Previous</a> <a href='W11-12.html'>Next</a> >> W11-12<br /><h1>W10</h1>
+<br />W9 << <a href='W9.html'>Previous</a> <a href='W11-12.html'>Next</a> >> W11-12</div>
         
     <!-- footer -->
       <div class="container">
