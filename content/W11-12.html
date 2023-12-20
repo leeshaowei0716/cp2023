@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W9.html'>W9</a><li><a href='W10.html'>W10</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a></li>
+                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W9-10.html'>W9-10</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,73 +142,86 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W10 << <a href='W10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>W11-12</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include </span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-#include </span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-#include </span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int main() {</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int 寬度 = 800;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-整數高度=600；</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImagePtr img = gdImageCreateTrueColor(寬度, 高度);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageAlphaBlending(img, 0);</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-FILE *outputFile = fopen("hellogd.png", "wb");</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-如果（輸出檔== NULL）{</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-fprintf(stderr, "開啟輸出檔時發生錯誤。\n");</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-返回1；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-}</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int 紅色 = gdImageColorAllocate(img, 255, 0, 0);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int 藍色 = gdImageColorAllocate(img, 0, 0, 255);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int black = gdImageColorAllocate(img, 0, 0, 0);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int 白色 = gdImageColorAllocate(img, 255, 255, 255);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 長方形著色</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageFilledRectangle(img, 0, 0, 寬度, 高度, 白色);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, 藍色);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 曲面形著色</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageFilledEllipse(img, (int)寬度*3/4, (int)高度/4, (int)寬度/4, (int)寬度/4, 紅色);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 圓形畫線</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageEllipse(img, (int)寬度*3/4, (int)高度*3/4, (int)寬度/4, (int)寬度/4, 紅色);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 畫直線</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, 藍色);</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 施工畫線</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdPoint點[4]；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[0].x = (int)寬度/4;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[0].y = (int)高度*3/4;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[1].x = 點[0].x + 100；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[1].y = 點[0].y；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[2].x = 點[1].x；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[2].y = 點[1].y + 100 ；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[3].x = 點[2].x - 100；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點[3].y = 點[2].y;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImagePolygon(img, 點, 4, 黑色);</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-// 廈門著色</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdPointpoints2[4];</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[0].x = (int)寬度/3;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[0].y = (int)高度/2;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[1].x =點2[0].x + 100；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[1].y = 點2[0].y;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[2].x = 點2[1].x;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[2].y = 點2[1].y + 100；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[3].x = 點2[2].x - 150；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-點2[3].y = 點2[2].y;</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageFilledPolygon(img, 點2, 4, 紅色);</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImagePngEx(img, 輸出檔, 9);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-fclose(輸出檔);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-gdImageDestroy(img);</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-回傳0；</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-}</span></span><span></span>
+    <div id="tipue_search_content">W9-10 << <a href='W9-10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>W11-12</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">＃包括</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+＃包括</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+＃包括</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int main() {</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int 寬度 = 800;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+整數高度=600；</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImagePtr img = gdImageCreateTrueColor(寬度, 高度);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageAlphaBlending(img, 0);</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+FILE *outputFile = fopen("hellogd.png", "wb");</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+如果（輸出檔== NULL）{</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+fprintf(stderr, "開啟輸出檔時發生錯誤。\n");</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+返回1；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+}</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int 紅色 = gdImageColorAllocate(img, 255, 0, 0);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int 藍色 = gdImageColorAllocate(img, 0, 0, 255);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int black = gdImageColorAllocate(img, 0, 0, 0);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int 白色 = gdImageColorAllocate(img, 255, 255, 255);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 長方形著色</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageFilledRectangle(img, 0, 0, 寬度, 高度, 白色);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, 藍色);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 曲面形著色</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageFilledEllipse(img, (int)寬度*3/4, (int)高度/4, (int)寬度/4, (int)寬度/4,紅色);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 圓形畫線</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageEllipse(img, (int)寬度*3/4, (int)高度*3/4, (int)寬度/4, (int)寬度/4,紅色);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 畫直線</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, 藍色);</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 施工畫線</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdPoint點[4]；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[0].x = (int)寬度/4;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[0].y = (int)高度*3/4;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[1].x = 點[0].x + 100；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[1].y = 點[0].y；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[2].x = 點[1].x；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[2].y = 點[1].y + 100 ；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[3].x = 點[2].x - 100；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點[3].y = 點[2].y;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImagePolygon(img, 點, 4, 黑色);</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+// 廈門著色</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdPointpoints2[4];</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[0].x = (int)寬度/3;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[0].y = (int)高度/2;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[1].x =點2[0].x + 100；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[1].y = 點2[0].y;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[2].x = 點2[1].x;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[2].y = 點2[1].y + 100；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[3].x = 點2[2].x - 150；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+點2[3].y = 點2[2].y;</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageFilledPolygon(img, 點2, 4, 紅色);</span></span></span></span></span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImagePngEx(img, 輸出檔, 9);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+fclose(輸出檔);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+gdImageDestroy(img);</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+回傳0；</span></span></span></span></span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+}</span></span></span></span></span></span><span></span>
 <span></span>
 </pre>
 <p><span style="vertical-align: inherit;"><br/><img alt="" height="300" src="./../images/hellogd.png" width="400"/></span></p>
-<br />W10 << <a href='W10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">先設定hello.c的檔</span></span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include &lt;stdio.h&gt;</span></span><span></span>
+<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+int main()</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+{</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+printf("你好世界\n");</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+}</span></span></pre>
+<p><br/><br/></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後再shell打cc hello.c會出現這個</span></span></p>
+<p><img alt="" height="257" src="./../images/螢幕擷取畫面 2023-12-21 022524.png" width="400"/></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後要回車這樣replit就會幫我準備好c</span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">之後再進行一次程式</span></span><span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc hello.c，然後打./a.out</span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後就會出現hello world</span></span></p>
+<br />W9-10 << <a href='W9-10.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
         
     <!-- footer -->
       <div class="container">
