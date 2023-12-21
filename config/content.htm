@@ -1369,8 +1369,38 @@ int main() {
 </pre>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"> <br/></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 <p>我的圖片不知道為甚麼不能傳所以我用打字說明</p>
-<p>先打cc ex.2-1.c再來打./a.out Hello World Good Bye Hello World Good Bye</p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">布萊頓</span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">先打cc ex.2-1.c再來打./a.out Hello World Good Bye Hello World Good Bye
+
+#include &lt;stdio.h&gt;
+
+int main() {
+printf("int 类型的大小为 %zu 字节\n", sizeof(int));
+
+char a;
+printf("char 类型变量 a 的大小为 %zu 字节\n", sizeof(a));
+
+return 0;
+}</pre>
+<p><img alt="" height="284" src="/images/螢幕擷取畫面 2023-12-21 131355.png" width="500"/><br/><br/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+float this_is_a_number1, this_is_a_number2;
+int scanf_result; // Dummy variable to capture scanf's return value
+
+/* 读取输入的浮点数 */
+scanf_result = scanf("%f", &amp;this_is_a_number1);
+
+/* 读取输入的浮点数 */
+scanf_result = scanf("%f", &amp;this_is_a_number2);
+
+/* Your code here */
+
+return 0;
+}
+
+</pre>
+<p><img alt="" height="147" src="/images/螢幕擷取畫面 2023-12-21 131906.png" width="500"/><br/>布萊頓</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://en.wikipedia.org/wiki/Python_（程式語言）</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
 <h4><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">例子：</span></span></span></span></span></span></span></span></span></span></span></span></span></span></h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
