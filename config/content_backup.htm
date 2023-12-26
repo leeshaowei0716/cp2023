@@ -1768,8 +1768,6 @@ int main(void)
 }
 </pre>
 <p><img alt="" height="177" src="/images/螢幕擷取畫面 2023-12-26 163652.png" width="594"/></p>
-<h2><video controls="controls" height="641" width="1000">
-<source src="/get_page/ANSIC/\images/3.mp4" type="video/mp4"/></video></h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
@@ -1853,9 +1851,516 @@ int main(void)
     printf("\nResult:(x^n) : %f ",powxn(x, n));
     return 0;
 }</pre>
-<img alt="" height="202" src="/images/螢幕擷取畫面 2023-12-26 190043.png" width="498"/>
+<p><img alt="" height="202" src="/images/螢幕擷取畫面 2023-12-26 190043.png" width="498"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/5.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">//Source: https://bit.ly/2KNsta8
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdbool.h&gt;
+
+char* fractionToDecimal(int numerator, int denominator) {
+    char *p;
+    int psz, n, *dec, dsz, x;
+    long long num, den, k, f;
+    int i, repeat_at;
+    int neg = 0;
+
+    psz = dsz = 100; n = x = 0;
+    p = malloc(psz * sizeof(char));
+
+    neg = ((numerator &gt; 0 &amp;&amp; denominator &lt; 0) ||
+           (numerator &lt; 0 &amp;&amp; denominator &gt; 0)) ? 1 : 0;
+    num = numerator;
+    den = denominator;
+    num = (num &lt; 0) ? -num : num;
+    den = (den &lt; 0) ? -den : den;
+
+    k = num / den;
+    f = num % den;
+
+    if (neg &amp;&amp; (k || f)) p[n ++] = '-';
+
+    n += sprintf(&amp;p[n], "%lld", k);
+    if (!f) {
+        p[n] = 0;
+        return p;
+    }
+
+    p[n ++] = '.';
+
+    dec = malloc(dsz * sizeof(int));
+
+    repeat_at = -1;
+    if (f &lt; 0) f = -f;
+    while (f) {
+        for (i = 0; i &lt; x; i += 2) {
+            if (dec[i] == f) {
+                repeat_at = i;
+                goto done;
+            }
+        }
+        if (x + 1 &gt;= dsz) {
+            dsz *= 2;
+            dec = realloc(dec, dsz * sizeof(int));
+        }
+        dec[x ++] = f;
+        f *= 10;
+        k = f / den;
+        dec[x ++] = k;
+        f = f % den;
+    }
+
+done:
+    for (i = 0; i &lt; x; i += 2) {
+        if (n + 3 &gt; psz) {
+            psz *= 2;
+            p = realloc(p, psz * sizeof(char));
+        }
+        if (repeat_at == i) {
+            p[n ++] = '(';
+        }
+        p[n ++] = '0' + dec[i + 1];
+    }
+    if (repeat_at != -1) p[n ++] = ')';
+    p[n ++] = 0;
+
+    free(dec);
+
+    return p;
+}
+
+int main(void)
+{
+    int n = 3;
+    int d = 2;
+    printf("\nn = %d, d = %d  ", n, d);
+    printf("\nFractional part: %s ", fractionToDecimal(n, d));
+
+    n = 4;
+    d = 7;
+    printf("\n\nn = %d, d = %d  ", n, d);
+    printf("\nFractional part: %s ", fractionToDecimal(n, d));
+
+    return 0;
+}
+</pre>
 <p></p>
-<h2>練習</h2>
+<p><img alt="" height="183" src="/images/螢幕擷取畫面 2023-12-26 193013.png" width="544"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/6.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int fno, sno, *ptr, *qtr, sum;  // 宣告整數變數 fno, sno, sum，以及整數指標 ptr, qtr
+
+    printf("\n\n Pointer : Add two numbers :\n");
+    printf("--------------------------------\n");
+
+    printf(" Input the first number : ");
+    // 檢查 scanf 的返回值，確保成功讀取一個整數
+    if (scanf("%d", &amp;fno) != 1) {
+        fprintf(stderr, "Error: Invalid input for the first number.\n");
+        return 1;
+    }
+
+    printf(" Input the second number : ");
+    // 檢查 scanf 的返回值，確保成功讀取一個整數
+    if (scanf("%d", &amp;sno) != 1) {
+        fprintf(stderr, "Error: Invalid input for the second number.\n");
+        return 1;
+    }
+
+    ptr = &amp;fno;  // 將 fno 的地址賦值給指標 ptr
+    qtr = &amp;sno;  // 將 sno 的地址賦值給指標 qtr
+
+    sum = *ptr + *qtr;  // 解參考 ptr 和 qtr，取得值並計算它們的和
+
+    printf(" The sum of the entered numbers is : %d\n\n", sum);  // 輸出輸入數字的總和
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="240" src="/images/螢幕擷取畫面 2023-12-26 200258.png" width="447"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/7.mp4" type="video/mp4"/></video></p>
+<p></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[10];  // 宣告一個大小為10的整數數組，用於存儲使用者輸入的整數
+    int i;
+
+    // 提示用戶輸入十個整數
+    printf("\n\nRead and Print elements of an array:\n");
+    printf("-----------------------------------------\n");
+    printf("Input 10 elements in the array :\n");
+
+    // 使用迴圈接受用戶輸入，並將整數存入數組
+    for (i = 0; i &lt; 10; i++) {
+        printf("element - %d : ", i);
+
+        // 檢查 scanf 的返回值，確保成功讀取一個整數
+        if (scanf("%d", &amp;arr[i]) != 1) {
+            fprintf(stderr, "Error: Invalid input for element %d.\n", i);
+            return 1;  // 如果輸入無效，返回錯誤碼
+        }
+    }
+
+    // 顯示數組中的所有元素
+    printf("\nElements in array are: ");
+    for (i = 0; i &lt; 10; i++) {
+        printf("%d  ", arr[i]);
+    }
+
+    printf("\n");
+    return 0;
+}
+</pre>
+<p><img alt="" height="251" src="/images/螢幕擷取畫面 2023-12-26 201835.png" width="400"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/8.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int days, years, weeks;
+
+    days = 1329; // 總天數
+
+    // 將天數轉換為年、週和天
+    years = days / 365;  // 計算年數
+    weeks = (days % 365) / 7;  // 計算週數
+    days = days % 7;  // 計算剩餘的天數
+
+    // 輸出結果
+    printf("Years: %d\n", years);
+    printf("Weeks: %d\n", weeks);
+    printf("Days: %d\n", days);
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="129" src="/images/螢幕擷取畫面 2023-12-26 203045.png" width="400"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/9.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    double wi1, ci1, wi2, ci2, result; // 宣告變數，用於存儲物品的重量和數量
+
+    // 提示用戶輸入物品1的重量
+    printf("Weight - Item1: ");
+    if (scanf("%lf", &amp;wi1) != 1) {
+        fprintf(stderr, "Error: Invalid input for weight of item1.\n");
+        return 1;
+    }
+
+    // 提示用戶輸入物品1的數量
+    printf("No. of item1: ");
+    if (scanf("%lf", &amp;ci1) != 1) {
+        fprintf(stderr, "Error: Invalid input for count of item1.\n");
+        return 1;
+    }
+
+    // 提示用戶輸入物品2的重量
+    printf("Weight - Item2: ");
+    if (scanf("%lf", &amp;wi2) != 1) {
+        fprintf(stderr, "Error: Invalid input for weight of item2.\n");
+        return 1;
+    }
+
+    // 提示用戶輸入物品2的數量
+    printf("No. of item2: ");
+    if (scanf("%lf", &amp;ci2) != 1) {
+        fprintf(stderr, "Error: Invalid input for count of item2.\n");
+        return 1;
+    }
+
+    // 計算平均值
+    result = ((wi1 * ci1) + (wi2 * ci2)) / (ci1 + ci2);
+
+    // 輸出平均值
+    printf("Average Value = %f\n", result);
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="180" src="/images/螢幕擷取畫面 2023-12-26 204129.png" width="399"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/10.mp4" type="video/mp4"/></video></p>
+<p></p>
+<p></p><h2>練習</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int x;    // 用於存儲總里程的變數，以公里為單位
+    float y;  // 用於存儲總耗油量的變數，以升為單位
+
+    // 提示用戶輸入總里程並存入 'x'
+    printf("Input total distance in km: ");
+    // 檢查 scanf 的返回值，確保成功讀取一個整數
+    if (scanf("%d", &amp;x) != 1) {
+        fprintf(stderr, "Error: Invalid input for total distance.\n");
+        return 1;
+    }
+
+    // 提示用戶輸入總耗油量並存入 'y'
+    printf("Input total fuel spent in liters: ");
+    // 檢查 scanf 的返回值，確保成功讀取一個浮點數
+    if (scanf("%f", &amp;y) != 1) {
+        fprintf(stderr, "Error: Invalid input for total fuel spent.\n");
+        return 1;
+    }
+
+    // 計算並打印平均油耗
+    printf("Average consumption (km/lt) %.3f ", x / y);
+    printf("\n");
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="132" src="/images/螢幕擷取畫面 2023-12-26 205545.png" width="522"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    float x, y, z, P; // 宣告變數，用於存儲三角形的邊長和周長
+
+    // 提示用戶輸入三個邊長並存入 'x', 'y', 和 'z'
+    printf("\nInput the first number: ");
+    if (scanf("%f", &amp;x) != 1) {
+        fprintf(stderr, "Error: Invalid input for the first number.\n");
+        return 1;
+    }
+
+    printf("\nInput the second number: ");
+    if (scanf("%f", &amp;y) != 1) {
+        fprintf(stderr, "Error: Invalid input for the second number.\n");
+        return 1;
+    }
+
+    printf("\nInput the third number: ");
+    if (scanf("%f", &amp;z) != 1) {
+        fprintf(stderr, "Error: Invalid input for the third number.\n");
+        return 1;
+    }
+
+    if (x &lt; (y + z) &amp;&amp; y &lt; (x + z) &amp;&amp; z &lt; (y + x)) // 檢查是否可以構成三角形
+    {
+        P = x + y + z; // 計算周長
+        printf("\nPerimeter  = %.1f\n", P); // 輸出周長
+    } else {
+        printf("Not possible to create a triangle..!"); // 如果無法構成三角形，輸出相應的信息
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="190" src="/images/螢幕擷取畫面 2023-12-26 205944.png" width="329"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int j, numbers[5], total = 0; // 宣告數組用於存儲 5 個數字和變數用於總和
+
+    // 提示用戶輸入五個數字並存入數組
+    for (j = 0; j &lt; 5; j++) {
+        printf("\nInput the %s number: ", j == 0 ? "first" : (j == 1 ? "second" : (j == 2 ? "third" : (j == 3 ? "fourth" : "fifth"))));
+        if (scanf("%d", &amp;numbers[j]) != 1) {
+            fprintf(stderr, "Error: Invalid input for the %s number.\n", j == 0 ? "first" : (j == 1 ? "second" : (j == 2 ? "third" : (j == 3 ? "fourth" : "fifth"))));
+            return 1;
+        }
+    }
+
+    for (j = 0; j &lt; 5; j++) {
+        if ((numbers[j] % 2) != 0) // 檢查數字是否為奇數
+        {
+            total += numbers[j]; // 將奇數添加到總和中
+        }
+    }
+
+    printf("\nSum of all odd values: %d", total); // 輸出所有奇數的總和
+    return 0;
+}
+</pre>
+<p><img alt="" height="219" src="/images/螢幕擷取畫面 2023-12-26 210347.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+int divide_two(int dividend_num, int divisor_num) {
+    int sign = (float)dividend_num / divisor_num &gt; 0 ? 1 : -1;
+    unsigned int dvd = dividend_num &gt; 0 ? dividend_num : -dividend_num;
+    unsigned int dvs = divisor_num &gt; 0 ? divisor_num : -divisor_num;
+    unsigned int bit_num[33];
+    unsigned int i = 0;
+    long long d = dvs;
+
+    bit_num[i] = d;
+    while (d &lt;= dvd) {
+        bit_num[++i] = d = d &lt;&lt; 1;
+    }
+    i--;
+
+    unsigned int result = 0;
+    while (dvd &gt;= dvs) {
+        if (dvd &gt;= bit_num[i]) {
+            dvd -= bit_num[i];
+            result += (1 &lt;&lt; i);
+        } else {
+            i--;
+        }
+    }
+
+    if (result &gt; INT_MAX &amp;&amp; sign &gt; 0) {
+        return INT_MAX;
+    }
+    return (int)result * sign;
+}
+
+int main(void) {
+    int dividend_num = 15;
+    int divisor_num = 3;
+    printf("Quotient after dividing %d and %d: %d", dividend_num, divisor_num, divide_two(dividend_num, divisor_num));
+    return 0;
+}
+</pre>
+<p><img alt="" height="49" src="/images/螢幕擷取畫面 2023-12-26 210627.png" width="391"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+// inline function to check if a given integer is even
+inline int is_even(int n) {
+    return n % 2 == 0;
+}
+
+int main() {
+    int num;
+
+    // 檢查 scanf 的返回值，確保成功讀取一個整數
+    if (scanf("%d", &amp;num) != 1) {
+        fprintf(stderr, "Error: Invalid input. Please enter a valid integer.\n");
+        return 1;
+    }
+
+    if (is_even(num)) {
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="101" src="/images/螢幕擷取畫面 2023-12-26 211711.png" width="471"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+
+inline float celsius_To_Fahrenheit(float celsius) {
+  return (celsius * 9 / 5) + 32;
+}
+inline float fahrenheit_To_Celsius(float fahrenheit) {
+  return (fahrenheit - 32) * 5 / 9;
+}
+
+int main() {
+  float celsius = 40;
+  float fahrenheit = 89.60;
+  printf("%.2f Celsius is equal to %.2f Fahrenheit\n", celsius, celsius_To_Fahrenheit(celsius));
+  printf("\n%.2f Fahrenheit is equal to %.2f Celsius\n", fahrenheit,
+    fahrenheit_To_Celsius(fahrenheit));
+  return 0;
+}</pre>
+<p><img alt="" height="198" src="/images/螢幕擷取畫面 2023-12-26 212025.png" width="483"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+
+    // Prompt user for input
+    printf("Input two pairs values (integer values):\n");
+
+    // Read two integer values from user and store them in 'a' and 'b'
+    if (scanf("%d %d", &amp;a, &amp;b) != 2) {
+        fprintf(stderr, "Error: Invalid input. Please enter two integer values.\n");
+        return 1;  // Return an error code for invalid input
+    }
+
+    // Check if 'a' is not equal to 'b'
+    if (a != b) {
+        // Check if 'b' is greater than 'a'
+        if (b &gt; a) {
+            printf("Ascending order\n");  // Print message for ascending order
+        } else {
+            printf("Descending order\n");  // Print message for descending order
+        }
+    }
+
+    return 0;  // End of program
+}
+</pre>
+<p><img alt="" height="266" src="/images/螢幕擷取畫面 2023-12-26 212847.png" width="493"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main(void) {
+    unsigned char char1, char2, char3, char4, char5, char6, char7, char8;
+
+    // Print table header
+    printf("|---------------------------------------------------------------------------------------------------------|\n");
+    printf("|extended ASCII table - excluding control characters                                                      |\n");
+    printf("|   Ch Dec  Hex  |  Ch Dec  Hex   | Ch Dec  Hex | Ch Dec  Hex  | Ch Dec  Hex  | Ch Dec  Hex | Ch Dec  Hex |\n");
+    printf("|----------------|----------------|-------------|--------------|--------------|-------------|-------------|\n");
+
+    // Loop through characters
+    for (int i = 0; i &lt; 32; i++) {
+        // Calculate characters for different ranges
+        char1 = i;
+        char2 = i + 32;
+        char3 = i + 64;
+        char4 = i + 96;
+        char5 = i + 128;  // extended ASCII characters
+        char6 = i + 160;
+        char7 = i + 192;
+        char8 = i + 224;
+
+        // Print characters and their decimal and hexadecimal representations
+        printf("|  %c %3d %#x ", char2, char2, char2);
+        printf("|  %c %3d %#x ", char3, char3, char3);
+
+        // Special case for DEL character
+        if (char4 == 127) {
+            printf("|%s %3d %#x |", "DEL", char4, char4);
+        } else {
+            printf("|  %c %3d %#x |", char4, char4, char4);
+        }
+
+        // Print extended ASCII characters for the current system.
+        printf("  %c %3d %#x |  %c %3d %#x |  %c %3d %#x |  %c %3d %#x |\n",
+               char5, char5, char5,
+               char6, char6, char6,
+               char7, char7, char7,
+               char8, char8, char8);
+    }
+
+    return 0;  // Indicate successful execution of the program
+}
+</pre>
+<p><img alt="" height="281" src="/images/螢幕擷取畫面 2023-12-26 213136.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int x; // Declare variable x
+
+    // Print header for the table
+    printf("x+1\tx+3\tx+5\tx+7\n\n");
+    printf("---------------------------\n");
+
+    // Loop to generate and print table values
+    for (x = 1; x &lt;= 15; x += 3)
+        printf("%d\t%d\t%d\t%d\n", x, (x + 2), (x + 4), (x + 6));
+
+    return 0; // Indicate successful program execution
+}
+</pre>
+<p><img alt="" height="425" src="/images/螢幕擷取畫面 2023-12-26 213557.png" width="321"/></p>
 <p>布萊頓</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://en.wikipedia.org/wiki/Python_（程式語言）</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
 <h4><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">例子：</span></span></span></span></span></span></span></span></span></span></span></span></span></span></h4>
