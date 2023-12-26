@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,185 +142,93 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w8 << <a href='w8.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>W11-12</h1>
+    <div id="tipue_search_content">ANSIC << <a href='ANSIC.html'>Previous</a> <a href='.html'>Next</a> >> <br /><h1>課程</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-#include &lt;math.h&gt;
-
-// Declare the rotation function
-void rotateFilledPolygon(int x_orig, int y_orig, double rotation_ang, gdPoint *points, int num_points) {
-    int i;
-    double angle_rad = rotation_ang * M_PI / 180.0;
-
-    for (i = 0; i &lt; num_points; i++) {
-        int x = points[i].x - x_orig;
-        int y = points[i].y - y_orig;
-
-        points[i].x = x_orig + (int)(x * cos(angle_rad) - y * sin(angle_rad));
-        points[i].y = y_orig + (int)(x * sin(angle_rad) + y * cos(angle_rad));
-    }
-}
+#include &lt;string.h&gt;
 
 int main() {
-    // Image dimensions
-    int width = 800;
-    int height = 600;
+    int n, x = 0;
 
-    // Create a true-color image
-    gdImagePtr img = gdImageCreateTrueColor(width, height);
-    gdImageAlphaBlending(img, 0);
+    printf("\n\n Check whether a given number is an ugly number:\n");
+    printf("----------------------------------------------------\n");
 
-    // Open the output file
-    FILE *outputFile = fopen("hellogd1.png", "wb");
-    if (outputFile == NULL) {
-        fprintf(stderr, "Error opening the output file.\n");
-        return 1;
+    // 检查 scanf 的返回值
+    if (scanf("%d", &amp;n) != 1) {
+        printf("Input is not a valid integer.\n");
+        return 1;  // 退出程序，表示出现错误
     }
 
-    // Define color indices
-    int red = gdImageColorAllocate(img, 255, 0, 0);
-    int blue = gdImageColorAllocate(img, 0, 0, 255);
-    int black = gdImageColorAllocate(img, 0, 0, 0);
-    int white = gdImageColorAllocate(img, 255, 255, 255);
+    if (n &lt;= 0) {
+        printf("Input a correct number.\n");
+    } else {
+        while (n != 1) {
+            if (n % 5 == 0) {
+                n /= 5;
+            } else if (n % 3 == 0) {
+                n /= 3;
+            } else if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                printf("It is not an ugly number.\n");
+                x = 1;
+                break;
+            }
+        }
 
-    // Draw filled rectangles, ellipse, line, and polygons
-    gdImageFilledRectangle(img, 0, 0, width, height, white);
-    gdImageFilledRectangle(img, 0, 0, (int)width / 4, (int)height / 4, blue);
-
-    gdImageFilledEllipse(img, (int)width * 3 / 4, (int)height / 4, (int)width / 4, (int)width / 4, red);
-    gdImageEllipse(img, (int)width * 3 / 4, (int)height * 3 / 4, (int)width / 4, (int)width / 4, red);
-    gdImageLine(img, (int)width / 2, (int)height / 2, (int)width / 2, (int)height / 2 + 100, blue);
-
-    gdPoint points[4] = {
-        { (int)width / 4, (int)height * 3 / 4 },
-        { (int)width / 4 + 100, (int)height * 3 / 4 },
-        { (int)width / 4 + 100, (int)height * 3 / 4 + 100 },
-        { (int)width / 4, (int)height * 3 / 4 + 100 }
-    };
-
-    // Call the rotation function for the first polygon
-    rotateFilledPolygon((int)width / 4 + 50, (int)height * 3 / 4 + 50, 45.0, points, 4);
-    gdImagePolygon(img, points, 4, black);
-
-    gdPoint points2[4] = {
-        { (int)width / 3, (int)height / 2 },
-        { (int)width / 3 + 100, (int)height / 2 },
-        { (int)width / 3 + 100, (int)height / 2 + 100 },
-        { (int)width / 3 - 50, (int)height / 2 + 100 }
-    };
-
-    // Call the rotation function for the second polygon
-    rotateFilledPolygon((int)width / 3 + 50, (int)height / 2 + 50, 30.0, points2, 4);
-    gdImageFilledPolygon(img, points2, 4, red);
-
-    // Save the image to the output file
-    gdImagePngEx(img, outputFile, 9);
-    fclose(outputFile);
-
-    // Free the memory used by the image
-    gdImageDestroy(img);
+        if (x == 0) {
+            printf("It is an ugly number.\n");
+        }
+    }
 
     return 0;
 }
 </pre>
-<p><span style="vertical-align: inherit;"><br/><img alt="" height="300" src="./../images/hellogd.png" width="400"/></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">先設定hello.c的檔</span></span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">#include &lt;stdio.h&gt;</span></span><span></span>
-<span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-int main()</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-{</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-printf("你好世界\n");</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-}</span></span></pre>
-<p><br/><br/></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後再shell打cc hello.c會出現這個</span></span></p>
-<p><img alt="" height="257" src="./../images/螢幕擷取畫面 2023-12-21 022524.png" width="400"/></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後要回車這樣replit就會幫我準備好c</span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">之後再進行一次程式</span></span><span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc hello.c，然後打./a.out</span></span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後就會出現hello world</span></span></p>
+<p><img alt="" height="136" src="./../images/螢幕擷取畫面 2023-12-26 155346.png" width="400"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="./../images/1.mp4" type="video/mp4"/></video></p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-#include &lt;math.h&gt;
+#include &lt;time.h&gt;
 
-// Declare the rotation function
-void rotateFilledPolygon(int x_orig, int y_orig, double rotation_ang, gdPoint *points, int num_points) {
-    int i;
-    double angle_rad = rotation_ang * M_PI / 180.0;
+int main(void)
+{
+    time_t epoch = 0;
 
-    for (i = 0; i &lt; num_points; i++) {
-        int x = points[i].x - x_orig;
-        int y = points[i].y - y_orig;
-
-        points[i].x = x_orig + (int)(x * cos(angle_rad) - y * sin(angle_rad));
-        points[i].y = y_orig + (int)(x * sin(angle_rad) + y * cos(angle_rad));
-    }
-}
-
-int main() {
-    int width = 800;
-    int height = 600;
-
-    gdImagePtr img = gdImageCreateTrueColor(width, height);
-    gdImageAlphaBlending(img, 0);
-
-    FILE *outputFile = fopen("hellogd2.png", "wb");
-    if (outputFile == NULL) {
-        fprintf(stderr, "Error opening the output file.\n");
-        return 1;
-    }
-
-    int red = gdImageColorAllocate(img, 255, 0, 0);
-    int blue = gdImageColorAllocate(img, 0, 0, 255);
-    int black = gdImageColorAllocate(img, 0, 0, 0);
-    int white = gdImageColorAllocate(img, 255, 255, 255);
-
-    gdImageFilledRectangle(img, 0, 0, width, height, white);
-    gdImageFilledRectangle(img, 0, 0, (int)width / 4, (int)height / 4, blue);
-
-    gdImageFilledEllipse(img, (int)width * 3 / 4, (int)height / 4, (int)width / 4, (int)width / 4, red);
-    gdImageEllipse(img, (int)width * 3 / 4, (int)height * 3 / 4, (int)width / 4, (int)width / 4, red);
-    gdImageLine(img, (int)width / 2, (int)height / 2, (int)width / 2, (int)height / 2 + 100, blue);
-
-    gdPoint points[4];
-    points[0].x = (int)width / 4;
-    points[0].y = (int)height * 3 / 4;
-    points[1].x = points[0].x + 100;
-    points[1].y = points[0].y;
-    points[2].x = points[1].x;
-    points[2].y = points[1].y + 100;
-    points[3].x = points[2].x - 100;
-    points[3].y = points[2].y;
-
-    // Call the rotation function multiple times
-    for (int i = 0; i &lt; 4; i++) {
-        rotateFilledPolygon((int)width / 4 + 50, (int)height * 3 / 4 + 50, 30.0, points, 4);
-        gdImagePolygon(img, points, 4, black);
-    }
-
-    gdPoint points2[4];
-    points2[0].x = (int)width / 3;
-    points2[0].y = (int)height / 2;
-    points2[1].x = points2[0].x + 100;
-    points2[1].y = points2[0].y;
-    points2[2].x = points2[1].x;
-    points2[2].y = points2[1].y + 100;
-    points2[3].x = points2[2].x - 150;
-    points2[3].y = points2[2].y;
-
-    // Call the rotation function multiple times
-    for (int i = 0; i &lt; 12; i++) {
-        //rotateFilledPolygon((int)width / 3 + 50, (int)height / 2 + 50, 30.0, points2, 4);
-        rotateFilledPolygon(500, 200, 30.0, points2, 4);
-        gdImageFilledPolygon(img, points2, 4, red);
-    }
-
-    gdImagePngEx(img, outputFile, 9);
-    fclose(outputFile);
-    gdImageDestroy(img);
+    printf("\n自纪元开始以来的秒数：%ld\n", (long)epoch);
+    printf("对应的日期和时间：%s\n", asctime(gmtime(&amp;epoch)));
 
     return 0;
-}</pre>
-<p><img alt="" height="300" src="./../images/hellogd2.png" width="400"/></p>
-<br />w8 << <a href='w8.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+}
+</pre>
+<p><br/><img alt="" height="144" src="./../images/螢幕擷取畫面 2023-12-26 162047.png" width="542"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="./../images/2.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#define __STDC_WANT_LIB_EXT1__ 1
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    time_t t = time(NULL);
+    printf("\nThe calendar time expressed as a local Time is :");	
+    printf("\nUTC:   %s", asctime(gmtime(&amp;t)));
+    printf("local: %s\n", asctime(localtime(&amp;t)));
+
+#ifdef __STDC_LIB_EXT1__
+    struct tm buf;
+    char str[26];
+
+    asctime_s(str, sizeof str, gmtime_s(&amp;t, &amp;buf));
+    printf("UTC:   %s", str);
+
+    asctime_s(str, sizeof str, localtime_s(&amp;t, &amp;buf));
+    printf("local: %s", str);
+#endif
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="177" src="./../images/螢幕擷取畫面 2023-12-26 163652.png" width="594"/></p>
+<br />ANSIC << <a href='ANSIC.html'>Previous</a> <a href='.html'>Next</a> >> </div>
         
     <!-- footer -->
       <div class="container">

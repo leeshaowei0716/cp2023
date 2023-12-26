@@ -1680,7 +1680,183 @@ return 0;
 }
 
 </pre>
-<p><img alt="" height="147" src="/images/螢幕擷取畫面 2023-12-21 131906.png" width="500"/><br/>布萊頓</p>
+<p><img alt="" height="147" src="/images/螢幕擷取畫面 2023-12-21 131906.png" width="500"/></p>
+<h1>ANSIC</h1>
+<h2>課程</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    int n, x = 0;
+
+    printf("\n\n Check whether a given number is an ugly number:\n");
+    printf("----------------------------------------------------\n");
+
+    // 检查 scanf 的返回值
+    if (scanf("%d", &amp;n) != 1) {
+        printf("Input is not a valid integer.\n");
+        return 1;  // 退出程序，表示出现错误
+    }
+
+    if (n &lt;= 0) {
+        printf("Input a correct number.\n");
+    } else {
+        while (n != 1) {
+            if (n % 5 == 0) {
+                n /= 5;
+            } else if (n % 3 == 0) {
+                n /= 3;
+            } else if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                printf("It is not an ugly number.\n");
+                x = 1;
+                break;
+            }
+        }
+
+        if (x == 0) {
+            printf("It is an ugly number.\n");
+        }
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="136" src="/images/螢幕擷取畫面 2023-12-26 155346.png" width="400"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/1.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    time_t epoch = 0;
+
+    printf("\n自纪元开始以来的秒数：%ld\n", (long)epoch);
+    printf("对应的日期和时间：%s\n", asctime(gmtime(&amp;epoch)));
+
+    return 0;
+}
+</pre>
+<p><br/><img alt="" height="144" src="/images/螢幕擷取畫面 2023-12-26 162047.png" width="542"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/2.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#define __STDC_WANT_LIB_EXT1__ 1
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    time_t t = time(NULL);
+    printf("\nThe calendar time expressed as a local Time is :");	
+    printf("\nUTC:   %s", asctime(gmtime(&amp;t)));
+    printf("local: %s\n", asctime(localtime(&amp;t)));
+
+#ifdef __STDC_LIB_EXT1__
+    struct tm buf;
+    char str[26];
+
+    asctime_s(str, sizeof str, gmtime_s(&amp;t, &amp;buf));
+    printf("UTC:   %s", str);
+
+    asctime_s(str, sizeof str, localtime_s(&amp;t, &amp;buf));
+    printf("local: %s", str);
+#endif
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="177" src="/images/螢幕擷取畫面 2023-12-26 163652.png" width="594"/></p>
+<h2><video controls="controls" height="641" width="1000">
+<source src="/get_page/ANSIC/\images/3.mp4" type="video/mp4"/></video></h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    // 设置时区为“Asia/Calcutta”
+    setenv("TZ", "/usr/share/zoneinfo/Asia/Calcutta", 1);   
+
+    // 获取并打印当前日期和时间
+    struct tm tm = *localtime(&amp;(time_t){time(NULL)});
+    printf("\n今天是 :            %s", asctime(&amp;tm));
+    printf("(夏令时 %s)\n", tm.tm_isdst ? "生效中" : "未生效");
+
+    // 将月份减去 24，表示 24 个月前的日期和时间
+    tm.tm_mon -= 24;  
+
+    // 重新计算时间
+    mktime(&amp;tm);       
+
+    // 获取并打印 24 个月前的日期和时间
+    printf("\n24个月前的日期是 : %s", asctime(&amp;tm));
+    printf("(夏令时 %s)\n\n", tm.tm_isdst ? "生效中" : "未生效");
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="237" src="/images/螢幕擷取畫面 2023-12-26 181409.png" width="502"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/3.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main(void)
+{
+    // 设置时区为“Asia/Calcutta”
+    setenv("TZ", "/usr/share/zoneinfo/Asia/Calcutta", 1);   
+
+    // 获取并打印当前日期和时间
+    struct tm tm = *localtime(&amp;(time_t){time(NULL)});
+    printf("\n今天是 :            %s", asctime(&amp;tm));
+    printf("(夏令时 %s)\n", tm.tm_isdst ? "生效中" : "未生效");
+
+    // 将月份减去 24，表示 24 个月前的日期和时间
+    tm.tm_mon -= 24;  
+
+    // 重新计算时间
+    mktime(&amp;tm);       
+
+    // 获取并打印 24 个月前的日期和时间
+    printf("\n24个月前的日期是 : %s", asctime(&amp;tm));
+    printf("(夏令时 %s)\n\n", tm.tm_isdst ? "生效中" : "未生效");
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="237" src="/images/螢幕擷取畫面 2023-12-26 181409.png" width="502"/></p>
+<p><video controls="controls" height="641" width="1000">
+<source src="/images/4.mp4" type="video/mp4"/></video></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+double powxn(double x, int n) {
+    double k;
+    if (n == 0) return 1;
+    k = powxn(x * x, n / 2);
+    if (n % 2) k = k * x;
+    return k;
+}
+
+int main(void)
+{
+    double x = 7.0;
+    int n = 2;
+    printf("\nx = %f, y = %d  ", x, n);
+    printf("\nResult:(x^n) : %f ",powxn(x, n));
+    x = 6.2;
+    n = 3;
+    printf("\n\nx = %f, y = %d  ", x, n);
+    printf("\nResult:(x^n) : %f ",powxn(x, n));
+    return 0;
+}</pre>
+<p><img alt="" height="202" src="/images/螢幕擷取畫面 2023-12-26 190043.png" width="498"/></p>
+<p>1</p>
+<h2>練習</h2>
+<p>布萊頓</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://en.wikipedia.org/wiki/Python_（程式語言）</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
 <h4><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">例子：</span></span></span></span></span></span></span></span></span></span></span></span></span></span></h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
