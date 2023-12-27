@@ -1841,8 +1841,210 @@ int main()
     return 0;
 }
 </pre>
-<p></p>
-<p></p><h1>ANSIC</h1>
+<p><img alt="" height="188" src="/images/螢幕擷取畫面 2023-12-27 214634.png" width="226"/></p>
+<p>3.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ &amp; operator.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int *pointer_a, a;
+    pointer_a = &amp;a;
+    a = 10;
+
+    printf("%d, %d\n", a, *pointer_a);
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="84" src="/images/螢幕擷取畫面 2023-12-27 214957.png" width="213"/></p>
+<p>4.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+pointer – 6
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+char *str = "Eric";
+
+printf("%c\n", *(str + 0)); /* 也可寫 printf("%c", str[0] ); */
+printf("%c\n", *(str + 1)); /* 也可寫 printf("%c", str[1] ); */
+printf("%c\n", *(str + 2)); /* 也可寫 printf("%c", str[2] ); */
+printf("%c\n", *(str + 3)); /* 也可寫 printf("%c", str[3] ); */
+
+return 0;
+}</pre>
+<p><img alt="" height="145" src="/images/螢幕擷取畫面 2023-12-27 215200.png" width="234"/><br/>5.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ 2d array.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int array[3][3];
+    int x, y;
+
+    array[0][0] = 1;
+    array[0][1] = 2;
+    array[0][2] = 3;
+    array[1][0] = 4;
+    array[1][1] = 5;
+    array[1][2] = 6;
+    array[2][0] = 7;
+    array[2][1] = 8;
+    array[2][2] = 9;
+
+    for (x = 0; x &lt; 3; x++)
+    {
+        for (y = 0; y &lt; 3; y++)
+        {
+            printf("%d,", array[x][y]);
+        }
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="74" src="/images/螢幕擷取畫面 2023-12-27 215420.png" width="345"/></p>
+<p>6.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ array - 1.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int grade[5]; /* size = 5 的 array */
+    int i;
+
+    grade[0] = 75; /* 1st element */
+    grade[1] = 80; /* 2nd element */
+    grade[2] = 85; /* 3rd element */
+    grade[3] = 70; /* 4th element */
+    grade[4] = 90; /* 5th element */
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Number %d = %d\n", i, grade[i]);
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="146" src="/images/螢幕擷取畫面 2023-12-27 215646.png" width="256"/></p>
+<p>7.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ do - while.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, j;
+    i = 0;
+    j = 10; /* 迴圈外先設定初值 */
+
+    do
+    {
+        printf("i = %d, ", i);
+        printf("j = %d\n", j);
+        i++;
+        j++;
+    } while (i &lt; 6); /* 檢查條件的地方 */
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="184" src="/images/螢幕擷取畫面 2023-12-27 215859.png" width="223"/></p>
+<p>8.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+99 乘法.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int x, y;
+
+    for (x = 1; x &lt;= 9; x++)
+    {
+        for (y = 1; y &lt;= 9; y++)
+        {
+            printf("%2d ", x * y);  /* 使用 %2d 以確保數字的對齊性 */
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="229" src="/images/螢幕擷取畫面 2023-12-27 220142.png" width="309"/></p>
+<p>9.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ Program "continue"
+ ==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+
+    for (i = 0; i &lt; 10; i++)
+    {
+        if ((i == 1) || (i == 2) || (i == 3))
+        {
+            continue; /* 忽略以後的 program, 回到 for. */
+        }
+        printf("i = %d\n", i);
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="216" src="/images/螢幕擷取畫面 2023-12-27 220424.png" width="272"/></p>
+<p>10.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+switch - case 的範例 3.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    char c;
+
+    printf("Input a char: ");
+
+    // 檢查 scanf 的返回值
+    if (scanf("%c", &amp;c) != 1)
+    {
+        printf("Error reading input.\n");
+        return 1; // 返回非零值表示錯誤
+    }
+
+    switch (c)
+    {
+    case 'a':
+        printf("You pressed a\n");
+        break;
+    case 'b':
+        printf("You pressed b\n");
+        break;
+    case 'c':
+        printf("You pressed c\n");
+        break;
+    default:
+        printf("Unrecognized input\n");
+        break;
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="274" src="/images/螢幕擷取畫面 2023-12-27 220743.png" width="215"/></p><h1>ANSIC</h1>
 <h2>課程</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
