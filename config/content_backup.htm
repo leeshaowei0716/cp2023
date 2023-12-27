@@ -910,7 +910,7 @@ int main()</span></span><span></span><span style="vertical-align: inherit;"><spa
 {</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
 printf("你好世界\n");</span></span><span></span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
 }</span></span></pre>
-<p><br/><br/></p>
+<h4><br/><br/></h4>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後再shell打cc hello.c會出現這個</span></span></p>
 <p><img alt="" height="257" src="/images/螢幕擷取畫面 2023-12-21 022524.png" width="400"/></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">然後要回車這樣replit就會幫我準備好c</span></span></p>
@@ -1054,10 +1054,77 @@ return 0;
 }</pre>
 </div>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="200" src="/images/motion_plot.png" width="400"/></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h1>W15</h1>
-<p><video controls="controls" height="641" width="1000">
-<source src="/images/計算機概論.mp4" type="video/mp4"/></video></p>
+<br/>W1<video controls="controls" height="641" width="1000">
+<source src="/images/計算機概論.mp4" type="video/mp4"/></video>
+<p>第一題</p>
+<p><span>根據 </span><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EVcefUI2zPpAmP6lnLWLEAoBCBznMnvFpsNE-1VVFGvVZQ?e=goiPpP&amp;isSPOFile=1">roc_list_coord_flag.7z</a><span><span> </span>程式內容所印出的六組 ABED 等繪製 ROC 國旗白日圖案中的菱形四個關鍵點, 請直接在青天與滿地紅的圖案中, 利用白色作為畫線顏色, 將第二組的 ABED 等四個點的座標, 以直線相連.</span></p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+ 
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+ 
+int main() {
+    // width 3: height 2
+    int width = 1200;
+    // 國旗長寬比為 3:2
+    int height = (int)(width * 2.0 / 3.0);
+ 
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+ 
+    draw_roc_flag(img);
+ 
+    FILE *outputFile = fopen("roc_flag_in_gd.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+ 
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+ 
+    // 白日位於青天面積正中央, 因此中心點座標為長寬各 1/4 處
+    int center_x = (int)(width / 4);
+    int center_y = (int)(height / 4);
+ 
+    int sun_radius = (int)(width / 8);
+    int white_circle_dia = sun_radius;
+    int blue_circle_dia = white_circle_dia + white_circle_dia * 2 / 15;
+ 
+    red = gdImageColorAllocate(img, 255, 0, 0); // 紅色
+    white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+    blue = gdImageColorAllocate(img, 0, 0, 149); // 藍色
+ 
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    gdImageFilledRectangle(img, 0, 0, (int)(width / 2.0), (int)(height / 2.0), blue);
+    draw_white_sun(img, center_x, center_y, sunS_radius, white);
+    gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
+    gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
+ 
+    // 在青天與滿地紅的圖案中以白色畫線繪製連接菱形的四個關鍵點
+    gdImageSetThickness(img, 10); // 設置線條粗度為10
+    gdImageLine(img, 429, 125, 279, 165, white);
+    gdImageLine(img, 279, 165, 170, 274, white);
+    gdImageLine(img, 170, 274, 170, 274, white);
+    gdImageLine(img, 429, 125, 170, 274, white); // 加入第四條連線
+}
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color) {
+    // 實現 draw_white_sun 函數的內容
+    // 可以在此處繪製白日的內部圖案
+}
+</pre>
+<p>第二題</p>
+<p><span>請列出第二組 ABED 的四條直線與白日中的大圓所相交 (intersect) 的四個點座標.</span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
 
@@ -1222,9 +1289,9 @@ void circleLineIntersection(double h, double k, double r, double x1, double y1, 
     } else {
         printf("No points.\n");
     }
-}
-</pre>
+}</pre>
 <h1>cEX</h1>
+<h2>課程</h2>
 <p><video controls="controls" height="641" width="1000">
 <source src="/images/12.mp4" type="video/mp4"/></video></p>
 <p><br/><span style="vertical-align: inherit;"></span></p>
@@ -1681,7 +1748,101 @@ return 0;
 
 </pre>
 <p><img alt="" height="147" src="/images/螢幕擷取畫面 2023-12-21 131906.png" width="500"/></p>
-<h1>ANSIC</h1>
+<h2>練習1</h2>
+<p>1.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ struct – 3.
+========================= */
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+/* ====================
+ struct Mouse.
+==================== */
+struct Mouse
+{
+    int xPos, yPos;
+    char Name[10];
+};
+
+/* ====================
+ Copy Mouse 1
+==================== */
+void cpyMouse1(struct Mouse *tgt, struct Mouse *src)
+{
+    tgt-&gt;xPos = src-&gt;xPos;
+    tgt-&gt;yPos = src-&gt;yPos;
+    strcpy(tgt-&gt;Name, src-&gt;Name);
+}
+
+/* ====================
+ main function.
+==================== */
+int main()
+{
+    struct Mouse myMouse, yourMouse;
+
+    yourMouse.xPos = 10;
+    yourMouse.yPos = 20;
+    strcpy(yourMouse.Name, "Mickey");
+
+    cpyMouse1(&amp;myMouse, &amp;yourMouse);
+
+    printf("Name: %s, X: %d, Y: %d\n", myMouse.Name, myMouse.xPos, myMouse.yPos);
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="103" src="/images/螢幕擷取畫面 2023-12-27 214058.png" width="385"/></p>
+<p>2.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ #define 的範例 2.
+========================= */
+#include &lt;stdio.h&gt;
+
+#define TRUE 1
+#define FALSE 0
+#define BOOL int
+
+/* ====================
+如果傳入值大於 10, 則傳回 TRUE
+==================== */
+BOOL is_greater_than_10(int i)
+{
+    if (i &gt; 10)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+/* ====================
+ main function.
+==================== */
+int main()
+{
+    int i;
+    BOOL result;
+
+    printf("Input a number: ");
+
+    // 檢查 scanf 的返回值
+    if (scanf("%d", &amp;i) != 1) {
+        printf("Error reading input.\n");
+        return 1;  // 返回非零值表示錯誤
+    }
+
+    result = is_greater_than_10(i);
+
+    if (result == TRUE)
+        printf("Greater than 10!\n"); /* 大於 10 */
+    else
+        printf("Not greater than 10!\n"); /* 不大於 10 */
+
+    return 0;
+}
+</pre>
+<p></p>
+<p></p><h1>ANSIC</h1>
 <h2>課程</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
@@ -2090,7 +2251,8 @@ int main() {
 <p><video controls="controls" height="641" width="1000">
 <source src="/images/10.mp4" type="video/mp4"/></video></p>
 <p></p>
-<p></p><h2>練習</h2>
+<p></p>
+<h2>練習</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 
 int main() {
@@ -2361,6 +2523,55 @@ int main() {
 }
 </pre>
 <p><img alt="" height="425" src="/images/螢幕擷取畫面 2023-12-26 213557.png" width="321"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    // 声明变量
+    float principal_amt, rate_of_interest, days, interest;
+    const int yearInDays = 365; // 用于转换利率的常量
+
+    // 提示用户输入贷款金额
+    printf("输入贷款金额 (输入 0 退出): ");
+    if (scanf("%f", &amp;principal_amt) != 1) {
+        fprintf(stderr, "Error: Invalid input for loan amount.\n");
+        return 1;
+    }
+
+    // 主循环用于处理贷款
+    while ((int)principal_amt != 0) 
+    {
+        // 提示用户输入利率
+        printf("输入利率: ");
+        if (scanf("%f", &amp;rate_of_interest) != 1) {
+            fprintf(stderr, "Error: Invalid input for interest rate.\n");
+            return 1;
+        }
+
+        // 提示用户输入贷款期限（天）
+        printf("输入贷款期限（天）: ");
+        if (scanf("%f", &amp;days) != 1) {
+            fprintf(stderr, "Error: Invalid input for loan term.\n");
+            return 1;
+        }
+
+        // 计算利息
+        interest = (principal_amt * rate_of_interest * days) / yearInDays;
+
+        // 显示利息金额
+        printf("利息金额为 $%.2f\n", interest);
+
+        // 提示用户输入下一个贷款金额
+        printf("\n\n输入贷款金额 (输入 0 退出): ");
+        if (scanf("%f", &amp;principal_amt) != 1) {
+            fprintf(stderr, "Error: Invalid input for loan amount.\n");
+            return 1;
+        }
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="216" src="/images/螢幕擷取畫面 2023-12-26 214349.png" width="388"/></p>
 <p>布萊頓</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">https://en.wikipedia.org/wiki/Python_（程式語言）</span></span></span></span></span></span></span></span></span></span></span></span></span></span></a></p>
 <h4><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">例子：</span></span></span></span></span></span></span></span></span></span></span></span></span></span></h4>

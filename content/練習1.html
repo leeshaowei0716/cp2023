@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a><li><a href='W15.html'>W15</a><li><a href='cEX.html'>cEX</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='課程.html'>課程</a><li><a href='練習.html'>練習</a></li>
+                     <li><a href='關於.html'>關於</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a><li class='has-children'><a href='cEX.html'>cEX</a><ul class='dropdown'><li><a href='課程-1.html'>課程-1</a><li><a href='練習1.html'>練習1</a></li></ul><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='課程-2.html'>課程-2</a><li><a href='練習.html'>練習</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,177 +142,303 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='cEX.html'>Next</a> >> cEX<br /><h1>W15</h1>
-<p><video controls="controls" height="641" width="1000">
-<source src="./../images/計算機概論.mp4" type="video/mp4"/></video></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-#include &lt;math.h&gt;
+    <div id="tipue_search_content">課程-1 << <a href='課程-1.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC<br /><h1>練習1</h1>
+<p>1.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ struct – 3.
+========================= */
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
-// 定義座標結構
-typedef struct {
-    double x;
-    double y;
-} Point;
+/* ====================
+ struct Mouse.
+==================== */
+struct Mouse
+{
+    int xPos, yPos;
+    char Name[10];
+};
 
-void draw_roc_flag(gdImagePtr img);
-void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color);
+/* ====================
+ Copy Mouse 1
+==================== */
+void cpyMouse1(struct Mouse *tgt, struct Mouse *src)
+{
+    tgt-&gt;xPos = src-&gt;xPos;
+    tgt-&gt;yPos = src-&gt;yPos;
+    strcpy(tgt-&gt;Name, src-&gt;Name);
+}
 
-// 計算圓與線的交點
-void circleLineIntersection(double h, double k, double r, double x1, double y1, double x2, double y2);
+/* ====================
+ main function.
+==================== */
+int main()
+{
+    struct Mouse myMouse, yourMouse;
 
-int main() {
-    // 設定圖片寬度和高度
-    int width = 1200;
-    int height = (int)(width * 2.0 / 3.0);
+    yourMouse.xPos = 10;
+    yourMouse.yPos = 20;
+    strcpy(yourMouse.Name, "Mickey");
 
-    gdImagePtr img = gdImageCreateTrueColor(width, height);
-    gdImageAlphaBlending(img, 0);
+    cpyMouse1(&amp;myMouse, &amp;yourMouse);
 
-    draw_roc_flag(img);
+    printf("Name: %s, X: %d, Y: %d\n", myMouse.Name, myMouse.xPos, myMouse.yPos);
 
-    FILE *outputFile = fopen("roc_flag_in_gd.png", "wb");
-    if (outputFile == NULL) {
-        fprintf(stderr, "Error opening the output file.\n");
-        return 1;
-    }
-    gdImagePngEx(img, outputFile, 9);
-    fclose(outputFile);
-    gdImageDestroy(img);
     return 0;
 }
+</pre>
+<p><img alt="" height="103" src="./../images/螢幕擷取畫面 2023-12-27 214058.png" width="385"/></p>
+<p>2.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ #define 的範例 2.
+========================= */
+#include &lt;stdio.h&gt;
 
-void draw_roc_flag(gdImagePtr img) {
-    int width = gdImageSX(img);
-    int height = gdImageSY(img);
-    int red, white, blue;
-    int center_x = (int)(width / 4);
-    int center_y = (int)(height / 4);
-    int sun_radius = (int)(width / 8);
-    int white_circle_dia = sun_radius;
-    int blue_circle_dia = white_circle_dia + white_circle_dia * 2 / 15;
-    red = gdImageColorAllocate(img, 255, 0, 0);
-    white = gdImageColorAllocate(img, 255, 255, 255);
-    blue = gdImageColorAllocate(img, 0, 0, 149);
+#define TRUE 1
+#define FALSE 0
+#define BOOL int
 
-    gdImageFilledRectangle(img, 0, 0, width, height, red);
-    gdImageFilledRectangle(img, 0, 0, (int)(width / 2.0), (int)(height / 2.0), blue);
-
-    draw_white_sun(img, center_x, center_y, sun_radius, white);
-
-    gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
-    gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
-
-    // 連接第二組ABED的白線
-    int ax = 429;
-    int ay = 125;
-    int bx = 279;
-    int by = 165;
-    int ex = 170;
-    int ey = 274;
-    int dx = 170;
-    int dy = 274;
-
-    // 設定線條寬度
-    gdImageSetThickness(img, 3);
-
-    gdImageLine(img, ax, ay, bx, by, white);
-    gdImageLine(img, bx, by, ex, ey, white);
-    gdImageLine(img, ex, ey, dx, dy, white);
-    gdImageLine(img, dx, dy, ax, ay, white);
-
-    // 新增連線 (ax, ay) 到 (dx, dy)
-    gdImageLine(img, ax, ay, dx, dy, white);
-
-    // 恢復預設線條寬度
-    gdImageSetThickness(img, 1);
-
-    // 利用一個藍色大圓與白色小圓畫出藍色環狀
-    gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
-    gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
-
-    // 圓的參數
-    double circle_x = (int)(width / 4); // 圓心 x 座標
-    double circle_y = (int)(height / 4); // 圓心 y 座標
-    double radius = white_circle_dia + white_circle_dia * 2 / 15; // 圓半徑
-
-    // 兩點座標
-    double x3 = 170;
-    double y3 = 274;
-    double x4 = 279;
-    double y4 = 165;
-
-    // 計算圓與線段 (x3, y3) 到 (x4, y4) 的交點
-    circleLineIntersection(circle_x, circle_y, radius, x4, y4, x3, y3);
-
-    double x5 = 279;
-    double y5 = 165;
-    double x6 = 429;
-    double y6 = 125;
-
-    // 計算圓與線段 (x6, y6) 到 (x5, y5) 的交點
-    circleLineIntersection(circle_x, circle_y, radius, x6, y6, x5, y5);
+/* ====================
+如果傳入值大於 10, 則傳回 TRUE
+==================== */
+BOOL is_greater_than_10(int i)
+{
+    if (i &gt; 10)
+        return TRUE;
+    else
+        return FALSE;
 }
 
-void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {
-    float deg = M_PI / 180;
-    float sr = sun_radius / tan(75 * deg);
-    int ax, ay, bx, by, dx, dy, ex, ey;
-    gdPoint points[4];
+/* ====================
+ main function.
+==================== */
+int main()
+{
+    int i;
+    BOOL result;
 
-    ax = center_x;
-    ay = center_y - sun_radius;
-    bx = center_x - sun_radius * tan(15 * deg);
-    by = center_y;
-    ex = center_x;
-    ey = center_y + sun_radius;
-    dx = center_x + sun_radius * tan(15 * deg);
-    dy = center_y;
+    printf("Input a number: ");
 
-    for (int i = 1; i &lt;= 6; i++) {
-        points[0].x = ax + sun_radius * sin(30 * deg * i);
-        points[0].y = ay + sun_radius - sun_radius * cos(30 * deg * i);
-
-        points[1].x = bx + sr - sr * cos(30 * deg * i);
-        points[1].y = by - sr * sin(30 * deg * i);
-
-        points[2].x = ex - sun_radius * sin(30 * deg * i);
-        points[2].y = ey - (sun_radius - sun_radius * cos(30 * deg * i));
-
-        points[3].x = dx - (sr - sr * cos(30 * deg * i));
-        points[3].y = dy + sr * sin(30 * deg * i);
-
-        gdImageFilledPolygon(img, points, 4, color);
-        gdImagePolygon(img, points, 4, color);
+    // 檢查 scanf 的返回值
+    if (scanf("%d", &amp;i) != 1) {
+        printf("Error reading input.\n");
+        return 1;  // 返回非零值表示錯誤
     }
-}
 
-void circleLineIntersection(double h, double k, double r, double x1, double y1, double x2, double y2) {
-    double m = (y2 - y1) / (x2 - x1);
-    double b = y1 - m * x1;
-    double A = 1 + pow(m, 2);
-    double B = 2 * (m * b - m * k - h);
-    double C = pow(k, 2) - pow(r, 2) + pow(h, 2) - 2 * b * k + pow(b, 2);
+    result = is_greater_than_10(i);
 
-    double discriminant = pow(B, 2) - 4 * A * C;
-    if (discriminant &gt; 0) {
-        double x_intersect1 = (-B + sqrt(discriminant)) / (2 * A);
-        double y_intersect1 = m * x_intersect1 + b;
-        printf("交點: (%.2f, %.2f)\n", x_intersect1, y_intersect1);
+    if (result == TRUE)
+        printf("Greater than 10!\n"); /* 大於 10 */
+    else
+        printf("Not greater than 10!\n"); /* 不大於 10 */
 
-        double x_intersect2 = (-B - sqrt(discriminant)) / (2 * A);
-        double y_intersect2 = m * x_intersect2 + b;
-        printf("交點: (%.2f, %.2f)\n", x_intersect2, y_intersect2);
-    } else if (discriminant == 0) {
-        double x_intersect = -B / (2 * A);
-        double y_intersect = m * x_intersect + b;
-        printf("交點: (%.2f, %.2f)\n", x_intersect, y_intersect);
-    } else {
-        printf("No points.\n");
-    }
+    return 0;
 }
 </pre>
-<br />w13 << <a href='w13.html'>Previous</a> <a href='cEX.html'>Next</a> >> cEX</div>
+<p><img alt="" height="188" src="./../images/螢幕擷取畫面 2023-12-27 214634.png" width="226"/></p>
+<p>3.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ &amp; operator.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int *pointer_a, a;
+    pointer_a = &amp;a;
+    a = 10;
+
+    printf("%d, %d\n", a, *pointer_a);
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="84" src="./../images/螢幕擷取畫面 2023-12-27 214957.png" width="213"/></p>
+<p>4.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+pointer – 6
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+char *str = "Eric";
+
+printf("%c\n", *(str + 0)); /* 也可寫 printf("%c", str[0] ); */
+printf("%c\n", *(str + 1)); /* 也可寫 printf("%c", str[1] ); */
+printf("%c\n", *(str + 2)); /* 也可寫 printf("%c", str[2] ); */
+printf("%c\n", *(str + 3)); /* 也可寫 printf("%c", str[3] ); */
+
+return 0;
+}</pre>
+<p><img alt="" height="145" src="./../images/螢幕擷取畫面 2023-12-27 215200.png" width="234"/><br/>5.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ 2d array.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int array[3][3];
+    int x, y;
+
+    array[0][0] = 1;
+    array[0][1] = 2;
+    array[0][2] = 3;
+    array[1][0] = 4;
+    array[1][1] = 5;
+    array[1][2] = 6;
+    array[2][0] = 7;
+    array[2][1] = 8;
+    array[2][2] = 9;
+
+    for (x = 0; x &lt; 3; x++)
+    {
+        for (y = 0; y &lt; 3; y++)
+        {
+            printf("%d,", array[x][y]);
+        }
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="74" src="./../images/螢幕擷取畫面 2023-12-27 215420.png" width="345"/></p>
+<p>6.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ array - 1.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int grade[5]; /* size = 5 的 array */
+    int i;
+
+    grade[0] = 75; /* 1st element */
+    grade[1] = 80; /* 2nd element */
+    grade[2] = 85; /* 3rd element */
+    grade[3] = 70; /* 4th element */
+    grade[4] = 90; /* 5th element */
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Number %d = %d\n", i, grade[i]);
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="146" src="./../images/螢幕擷取畫面 2023-12-27 215646.png" width="256"/></p>
+<p>7.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ do - while.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, j;
+    i = 0;
+    j = 10; /* 迴圈外先設定初值 */
+
+    do
+    {
+        printf("i = %d, ", i);
+        printf("j = %d\n", j);
+        i++;
+        j++;
+    } while (i &lt; 6); /* 檢查條件的地方 */
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="184" src="./../images/螢幕擷取畫面 2023-12-27 215859.png" width="223"/></p>
+<p>8.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+99 乘法.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int x, y;
+
+    for (x = 1; x &lt;= 9; x++)
+    {
+        for (y = 1; y &lt;= 9; y++)
+        {
+            printf("%2d ", x * y);  /* 使用 %2d 以確保數字的對齊性 */
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="229" src="./../images/螢幕擷取畫面 2023-12-27 220142.png" width="309"/></p>
+<p>9.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ Program "continue"
+ ==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+
+    for (i = 0; i &lt; 10; i++)
+    {
+        if ((i == 1) || (i == 2) || (i == 3))
+        {
+            continue; /* 忽略以後的 program, 回到 for. */
+        }
+        printf("i = %d\n", i);
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="216" src="./../images/螢幕擷取畫面 2023-12-27 220424.png" width="272"/></p>
+<p>10.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+switch - case 的範例 3.
+==================== */
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    char c;
+
+    printf("Input a char: ");
+
+    // 檢查 scanf 的返回值
+    if (scanf("%c", &amp;c) != 1)
+    {
+        printf("Error reading input.\n");
+        return 1; // 返回非零值表示錯誤
+    }
+
+    switch (c)
+    {
+    case 'a':
+        printf("You pressed a\n");
+        break;
+    case 'b':
+        printf("You pressed b\n");
+        break;
+    case 'c':
+        printf("You pressed c\n");
+        break;
+    default:
+        printf("Unrecognized input\n");
+        break;
+    }
+
+    return 0;
+}
+</pre>
+<p><img alt="" height="274" src="./../images/螢幕擷取畫面 2023-12-27 220743.png" width="215"/></p><br />課程-1 << <a href='課程-1.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC</div>
         
     <!-- footer -->
       <div class="container">
