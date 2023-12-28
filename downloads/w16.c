@@ -1,6 +1,8 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>  // for system
+#include <unistd.h>
 
 const double eps = 1e-14;
 
@@ -9,7 +11,7 @@ typedef struct point_t {
 } point;
 
 point make_point(double x, double y) {
-    point p = { x, y };
+    point p = {x, y};
     return p;
 }
 
@@ -30,11 +32,11 @@ double sq(double x) {
 }
 
 bool within(double x1, double y1, double x2, double y2, double x, double y) {
-    double d1 = sqrt(sq(x2 - x1) + sq(y2 - y1));    // distance between end-points
-    double d2 = sqrt(sq(x - x1) + sq(y - y1));      // distance from point to one end
-    double d3 = sqrt(sq(x2 - x) + sq(y2 - y));      // distance from point to other end
+    double d1 = sqrt(sq(x2 - x1) + sq(y2 - y1));  // distance between end-points
+    double d2 = sqrt(sq(x - x1) + sq(y - y1));    // distance from point to one end
+    double d3 = sqrt(sq(x2 - x) + sq(y2 - y));    // distance from point to other end
     double delta = d1 - d2 - d3;
-    return fabs(delta) < eps;   // true if delta is less than a small tolerance
+    return fabs(delta) < eps;  // true if delta is less than a small tolerance
 }
 
 int rxy(double x1, double y1, double x2, double y2, double x, double y, bool segment) {
@@ -78,7 +80,7 @@ void intersects(point p1, point p2, point cp, double r, bool segment) {
         c = sq(C) + 2 * A * C * x0 - sq(A) * (sq(r) - sq(x0) - sq(y0));
         bnz = false;
     }
-    d = sq(b) - 4 * a * c; // discriminant
+    d = sq(b) - 4 * a * c;  // discriminant
     if (d < 0) {
         // line & circle don't intersect
         printf("[]\n");
@@ -150,7 +152,7 @@ int main() {
     intersects(make_point(0, -3), make_point(0, 6), cp, r, true);
     printf("\n");
 
-    cp = make_point(4,2);
+    cp = make_point(4, 2);
     r = 5.0;
     printf("  A circle, center (4, 2) with radius 5, and:\n");
     printf("    a line containing the points (6, 3) and (10, 7) is/are:\n");
@@ -161,85 +163,22 @@ int main() {
     intersects(make_point(7, 4), make_point(11, 8), cp, r, true);
     printf("\n");
 
-    return 0;
-}#include <stdio.h>
-#include <stdlib.h>
-#include <gd.h>
-#include <gdfonts.h>
-#include <math.h>
-
-// Structure to represent a point
-typedef struct {
-    double x, y;
-} Point;
-
-// Function to create a point
-Point make_point(double x, double y) {
-    Point p = {x, y};
-    return p;
-}
-
-// Function to draw a point on the image
-void draw_point(gdImagePtr im, Point p, int color) {
-    gdImageSetPixel(im, (int)p.x, (int)p.y, color);
-}
-
-// Function to draw a line on the image
-void draw_line(gdImagePtr im, Point p1, Point p2, int color) {
-    gdImageLine(im, (int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y, color);
-}
-
-// Function to create an image and draw the intersections
-void draw_intersections(Point p1, Point p2, Point cp, double r, char* output_filename) {
-    gdImagePtr im;
-    FILE *output;
-
-    // Create a new image with a white background
-    im = gdImageCreateTrueColor(800, 600);
-    int white = gdImageColorAllocate(im, 255, 255, 255);
-    gdImageFill(im, 0, 0, white);
-
-    // Draw the circle
-    int blue = gdImageColorAllocate(im, 0, 0, 255);
-    gdImageArc(im, (int)cp.x, (int)cp.y, (int)r * 2, (int)r * 2, 0, 360, blue);
-
-    // Draw the line
-    int black = gdImageColorAllocate(im, 0, 0, 0);
-    draw_line(im, p1, p2, black);
-
-    // Calculate and draw the intersection points
-    int red = gdImageColorAllocate(im, 255, 0, 0);
-    draw_point(im, make_point(6, -5), red);
-    draw_point(im, make_point(3, -2), red);
-    draw_point(im, make_point(3, -2), red);
-
-    // Save the image to a file
-    output = fopen(output_filename, "wb");
-    if (!output) {
-        fprintf(stderr, "Error: Could not open output file.\n");
-        gdImageDestroy(im);
-        exit(EXIT_FAILURE);
+    // 使用Gnuplot生成圖片
+    FILE *gnuplotPipe = popen("gnuplot -persist", "w");
+    if (gnuplotPipe) {
+        fprintf(gnuplotPipe, "plot '-' with points pointtype 7 title 'Intersection Points'\n");
+        fprintf(gnuplotPipe, "%lf %lf\n", 6.0, -5.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 3.0, -2.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 0.0, 4.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 0.0, -4.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 8.0, 5.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 1.0, -2.0);
+        fprintf(gnuplotPipe, "%lf %lf\n", 8.0, 5.0);
+        fprintf(gnuplotPipe, "e\n");
+        fflush(gnuplotPipe);
+        sleep(10);  // 保持窗口打開，你可以根據需要更改這個值
+        pclose(gnuplotPipe);
     }
-
-    gdImagePng(im, output);
-    fclose(output);
-    gdImageDestroy(im);
-}
-
-int main() {
-    Point cp = make_point(3, -5);
-    double r = 3.0;
-    draw_intersections(make_point(-10, 11), make_point(10, -9), cp, r, "output.png");
-
-    cp = make_point(0, 0);
-    r = 4.0;
-    draw_intersections(make_point(0, -3), make_point(0, 6), cp, r, "output2.png");
-
-    cp = make_point(4, 2);
-    r = 5.0;
-    draw_intersections(make_point(6, 3), make_point(10, 7), cp, r, "output3.png");
-
-    printf("Images created successfully.\n");
 
     return 0;
 }
