@@ -1,0 +1,289 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>cmsite</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cmsimde/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cmsimde/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>41223221 cp2023</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">41223221 cp2023</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='關於.html'>關於</a><li><a href='韓國國旗解說.html'>韓國國旗解說</a><li class='has-children'><a href='.html'></a><ul class='dropdown'><li><a href='國旗程式詳細解說.html'>國旗程式詳細解說</a></li></ul><li><a href='w2-3.html'>w2-3</a><li><a href='w4-5.html'>w4-5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='W11-12.html'>W11-12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='cEX.html'>cEX</a><ul class='dropdown'><li><a href='課程1.html'>課程1</a><li><a href='練習1.html'>練習1</a></li></ul><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='課程2.html'>課程2</a><li><a href='練習2.html'>練習2</a></li></ul><li><a href='期末總結.html'>期末總結</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content"> << <a href='.html'>Previous</a> <a href='w2-3.html'>Next</a> >> w2-3<br /><h1>國旗程式詳細解說</h1>
+<p>include &lt;gd.h&gt;</p>
+<p><span>GD 是一個用於圖形處理的函式庫，它提供了一些基本的繪圖功能</span></p>
+<p>#include &lt;stdio.h&gt;</p>
+<p><span>它用於導入標準輸入輸出（Standard Input/Output）函式庫的標頭文件。</span></p>
+<p><span>include &lt;math.h&gt;</span></p>
+<p><span>用於導入數學函式庫的標頭文件。這樣你的程式就能夠使用像 <code>sin</code><span>、</span><code>cos</code><span>、</span><code>sqrt</code><span> 等數學函式了。</span></span></p>
+<p><span> gdImagePtr im; (</span><span><code>gdImagePtr</code><span> 是 GD 函式庫中表示圖片的指標類型)</span><br/> FILE *output; (</span>是標準 C 語言中用於文件輸出的指標)</p>
+<p><span>int white, red, blue, black; (</span><span>這些變數的目的可能是用來表示顏色的一些屬性)</span></p>
+<p><span><span class="hljs-type"><span class="hljs-comment">// 創建一個真彩色的圖像，寬度為600，高度為400</span></span></span></p>
+<p><span><span class="hljs-type"><span> im = gdImageCreateTrueColor(</span><span class="hljs-number">600</span><span>, </span><span class="hljs-number">400</span><span>);</span></span></span></p>
+<p><span><span class="hljs-type"><span><span class="hljs-comment">// 分配顏色，這裡的數字表示RGB值，white為白色</span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span> white = gdImageColorAllocate(im, </span><span class="hljs-number">255</span><span>, </span><span class="hljs-number">255</span><span>, </span><span class="hljs-number">255</span><span>); </span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span>red = gdImageColorAllocate(im, </span><span class="hljs-number">225</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>); </span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span>blue = gdImageColorAllocate(im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">225</span><span>); </span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span>black = gdImageColorAllocate(im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>);</span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span class="hljs-comment">// 填充白色背景，將整個圖像填充為白色</span><span> </span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span>gdImageFilledRectangle(im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">599</span><span>, </span><span class="hljs-number">399</span><span>, white);</span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><code>gdImageFilledArc</code><span> 是 GD（Graphics Draw）函式庫中的一個函式，用於在圖像中填充弧形。</span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span> <span class="hljs-comment">// 在中間添加紅藍各一半的圓，將紅色移到上方，藍色移到下方</span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span> </span><span class="hljs-type">int</span><span> centerX = </span><span class="hljs-number">300</span><span>; </span><span class="hljs-type">int</span><span> centerY = </span><span class="hljs-number">200</span><span>; </span><span class="hljs-type">int</span><span> radius = </span><span class="hljs-number">200</span><span>;</span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span> <span class="hljs-comment">// 這兩個函式分別繪製一半的圓，使用gdPie表示只繪製半圓</span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span> gdImageFilledArc(im, centerX, centerY, radius, radius, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">180</span><span>, blue, gdPie); </span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span>gdImageFilledArc(im, centerX, centerY - </span><span class="hljs-number">1</span><span>, radius, radius, </span><span class="hljs-number">180</span><span>, </span><span class="hljs-number">360</span><span>, red, gdPie);</span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span>我們可以使用相同的半徑（<code>radius</code><span>）值來表示寬度和高度，從而畫出一個圓形的弧形或扇形。這樣的寬度和高度相等的情況下，就可以視 </span><code>radius</code><span> 為圓形的半徑。</span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span class="hljs-comment">// 在中間添加向右偏移49的直徑為100的藍色圓</span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span> </span><span class="hljs-type">int</span><span> blueCircleRadius = </span><span class="hljs-number">50</span><span>; </span><span class="hljs-comment">// 半徑為50</span><span> </span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span class="hljs-type">int</span><span> offsetX = </span><span class="hljs-number">49</span><span>;</span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span> <span class="hljs-comment">// 繪製橢圓，以形成一個圓</span><span> </span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span>gdImageFilledEllipse(im, centerX + offsetX, centerY, blueCircleRadius * </span><span class="hljs-number">2</span><span>, blueCircleRadius * </span><span class="hljs-number">2</span><span>, blue);</span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment">// 在中間添加向左偏移50的直徑為100的紅色圓</span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span> </span><span class="hljs-type">int</span><span> redCircleRadius = </span><span class="hljs-number">50</span><span>; </span><span class="hljs-comment">// 半徑為50</span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment">// 繪製橢圓，以形成一個圓</span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span> gdImageFilledEllipse(im, centerX - </span><span class="hljs-number">49</span><span>, centerY, redCircleRadius * </span><span class="hljs-number">2</span><span>, redCircleRadius * </span><span class="hljs-number">2</span><span>, red);</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><code>gdImageFilledEllipse</code><span> 是 GD（Graphics Draw）函式庫中的一個函式，用於在圖像中填充橢圓。</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span>// 創建一個新的圖像，用於保存旋轉後的圖像</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span> gdImagePtr rotated_im = gdImageCreateTrueColor(</span><span class="hljs-number">600</span><span>, </span><span class="hljs-number">400</span><span>);</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><code>rotated_im</code><span>。這個指標用於表示一個新的圖像，通常用來保存旋轉或變換後的圖像。</span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span> <span class="hljs-comment">// 填充白色背景</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span> gdImageFilledRectangle(rotated_im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">599</span><span>, </span><span class="hljs-number">399</span><span>, white);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span> <span class="hljs-comment">// 複製原始圖像到旋轉後的圖像中</span><span> </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span>gdImageCopy(rotated_im, im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">600</span><span>, </span><span class="hljs-number">400</span><span>);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span>// 進行逆時針旋轉，角度為25度</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span> </span><span class="hljs-type">double</span><span> rotationAngle = </span><span class="hljs-number">25.0</span><span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span> double<span><span> </span>rotationAngle<span> </span></span>是一個雙精度浮點數變數，它用來儲存旋轉的角度。</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span>gdImageRotate(rotated_im, im, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">0</span><span>, </span><span class="hljs-number">600</span><span>, </span><span class="hljs-number">400</span><span>, gdTrueColorAlpha(</span><span class="hljs-number">255</span><span>, </span><span class="hljs-number">255</span><span>, </span><span class="hljs-number">255</span><span>, </span><span class="hljs-number">127</span><span>));</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span><code>gdImageRotate</code><span> 函式，該函式用於對圖像進行旋轉。</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span><span> // 繪製斜直的長方形<br/> int rectWidth = 15; // 長方形寬度<br/> int rectHeight = 120; // 長方形高度<br/> int rectSpacing = 10; // 長方形間隔</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span><span class="hljs-type"><span><span><span><span><span><span><span><span class="hljs-comment"><span><span><span><span><span><span><span><span> // 計算三個長方形的左上角座標<br/> int rect1X = 139 - rectWidth - rectSpacing; // 第一個長方形<br/> int rect1Y = 206 - rectHeight / 2;<br/> int rect2X = rect1X - rectWidth - rectSpacing; // 第二個長方形<br/> int rect2Y = rect1Y;<br/> int rect3X = rect2X - rectWidth - rectSpacing; // 第三個長方形<br/> int rect3Y = rect1Y;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdPoint points1[4];
+    points1[0].x = (int)(rect1X - centerX) * cos(rotationAngle * M_PI / 180) - (rect1Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points1[0].y = (int)(rect1X - centerX) * sin(rotationAngle * M_PI / 180) + (rect1Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points1[1].x = (int)((rect1X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - (rect1Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points1[1].y = (int)((rect1X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + (rect1Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points1[2].x = (int)((rect1X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - ((rect1Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points1[2].y = (int)((rect1X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + ((rect1Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points1[3].x = (int)(rect1X - centerX) * cos(rotationAngle * M_PI / 180) - ((rect1Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points1[3].y = (int)(rect1X - centerX) * sin(rotationAngle * M_PI / 180) + ((rect1Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+
+    gdPoint points2[4];
+    points2[0].x = (int)(rect2X - centerX) * cos(rotationAngle * M_PI / 180) - (rect2Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points2[0].y = (int)(rect2X - centerX) * sin(rotationAngle * M_PI / 180) + (rect2Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points2[1].x = (int)((rect2X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - (rect2Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points2[1].y = (int)((rect2X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + (rect2Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points2[2].x = (int)((rect2X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - ((rect2Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points2[2].y = (int)((rect2X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + ((rect2Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points2[3].x = (int)(rect2X - centerX) * cos(rotationAngle * M_PI / 180) - ((rect2Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points2[3].y = (int)(rect2X - centerX) * sin(rotationAngle * M_PI / 180) + ((rect2Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+
+    gdPoint points3[4];
+    points3[0].x = (int)(rect3X - centerX) * cos(rotationAngle * M_PI / 180) - (rect3Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points3[0].y = (int)(rect3X - centerX) * sin(rotationAngle * M_PI / 180) + (rect3Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points3[1].x = (int)((rect3X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - (rect3Y - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points3[1].y = (int)((rect3X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + (rect3Y - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points3[2].x = (int)((rect3X + rectWidth) - centerX) * cos(rotationAngle * M_PI / 180) - ((rect3Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points3[2].y = (int)((rect3X + rectWidth) - centerX) * sin(rotationAngle * M_PI / 180) + ((rect3Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+    points3[3].x = (int)(rect3X - centerX) * cos(rotationAngle * M_PI / 180) - ((rect3Y + rectHeight) - centerY) * sin(rotationAngle * M_PI / 180) + centerX;
+    points3[3].y = (int)(rect3X - centerX) * sin(rotationAngle * M_PI / 180) + ((rect3Y + rectHeight) - centerY) * cos(rotationAngle * M_PI / 180) + centerY;
+
+    gdImageFilledPolygon(rotated_im, points1, 4, black);
+    gdImageFilledPolygon(rotated_im, points2, 4, black);
+    gdImageFilledPolygon(rotated_im, points3, 4, black);
+
+</pre>
+<p><span>首先，程式碼使用了 </span><code>gdPoint</code><span> 這個結構體定義，表示一個二維平面上的點，具有 </span><code>x</code><span> 和 </span><code>y</code><span> 座標。</span></p>
+<p><span>程式碼創建了三個陣列 <code>points1</code><span>、</span><code>points2</code><span>、</span><code>points3</code><span>，每個陣列包含四個點，用來表示三個矩形的頂點座標。</span></span></p>
+<p><span><span>cos sin是由include &lt;math.h&gt;標題檔來的</span></span></p>
+<p><span><span><code>M_PI</code><span> 是在 C 語言中提供的數學常數，表示圓周率 π（pi）</span></span></span></p>
+<p><span><span><span><code>rect1X - centerX</code><span> 是一個數學表達式，表示矩形的一個頂點的 x 座標相對於圖像的中心 x 座標的偏移量。</span></span></span></span></p>
+<p><span><span><span><span><code>cos(rotationAngle * M_PI / 180)</code><span> 是一個表達式，用來計算角度 </span><code>rotationAngle</code><span> 對應的弧度值的餘弦值。</span></span></span></span></span></p>
+<p><span><span><span><span><span><code>rect1Y - centerY</code><span> 是一個數學表達式，表示矩形的一個頂點的 y 座標相對於圖像的中心 y 座標的偏移量。</span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><code>sin(rotationAngle * M_PI / 180)</code><span> 是一個表達式，用來計算角度 </span><code>rotationAngle</code><span> 對應的弧度值的正弦值。</span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><code>rotationAngle</code><span> 是以度為單位的角度，而 </span><code>M_PI / 180</code><span> 是用來將角度轉換為弧度的比例因子。</span></span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><span>其餘的都跟上面一樣只是運算的位置不一樣，還有運算的長方形也不一樣</span></span></span></span></span></span></span></span></p>
+<br /> << <a href='.html'>Previous</a> <a href='w2-3.html'>Next</a> >> w2-3</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
